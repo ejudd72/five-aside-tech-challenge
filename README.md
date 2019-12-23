@@ -9,9 +9,9 @@ Build a 5 a side team picker:
 Accept names of 10 players, hit a button and it will randomise it into 2 teams of 5. 
 
 ### Optional features: 
-- solution can support any number of people a side
+- solution can support any number of people a side (begin with a form of 10 entries, ability to add/remove number of entries)
 - ability to balance teams - splitting strong/weak fairly. 
-- allow 
+- ability to view previous teams 
 
 ### Progress: 
 - Javascript functions created to sort an array of any number of player objects and sort randomly (23/12/2019)
