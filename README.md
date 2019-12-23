@@ -2,6 +2,7 @@
 Technical challenge for developMe cohort 14's technical challenge: five-aside team splitting app
 
 ## User: To get this project running, use the following command:
+npm install (?)
 npm start 
 
 ## Project Brief: 
