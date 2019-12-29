@@ -1,17 +1,14 @@
 import React from "react";
 import Header from "./Header";
+import StartForm from "./StartForm";
+
 
 const App = () => (
     <>
         <Header />
 
-        {/* <GameStart/>
-        <Loading>
-        <div className="row md-6" style={{ padding: 15 }}>
-            <Player1/>
-            <Player2/>
-        </div>
-        </Loading>
+        <StartForm/>
+{/*        
         <hr/>
         <Loading>
             <Result/>
