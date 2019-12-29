@@ -10,6 +10,7 @@ let players = [
     {name: "player8", skill: 9},
     {name: "player9", skill: 2},
     {name: "player10", skill: 2},
+    {name: "player11", skill: 6},
 ]
 
 // function to shuffle an array randomly - fischer-yates
