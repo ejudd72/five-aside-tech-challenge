@@ -1,16 +1,16 @@
 
-//shuffle an array of objects based on skill level 
+//sort an array of player objects into 2 teams based on skill level 
 let players = [
-    {name: "player1", skill: 10}, 
+    {name: "player1", skill: -100}, 
     {name: "player2", skill: 20}, 
-    {name: "player3", skill: 20}, 
-    {name: "player4", skill: 40}, 
-    {name: "player5", skill: 40}, 
-    {name: "player6", skill: 60},
-    {name: "player7", skill: 70},
-    {name: "player8", skill: 70},
-    {name: "player9", skill: 60},
-    {name: "player10", skill: 10},
+    {name: "player3", skill: -20}, 
+    {name: "player4", skill: 4}, 
+    {name: "player5", skill: 5}, 
+    {name: "player6", skill: 6},
+    {name: "player7", skill: 7},
+    {name: "player8", skill: 7},
+    {name: "player9", skill: 8},
+    {name: "player10", skill: 100},
 ]
 
 // this function will then return an array of player objects sorted by skill level
