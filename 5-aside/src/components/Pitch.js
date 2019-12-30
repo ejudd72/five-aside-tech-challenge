@@ -4,17 +4,19 @@ import Teams from "./Teams";
 import { Button } from "react-bootstrap";
 
 const Pitch = ({ team1, team2, allPlayers, randomSort, handleEditPlayers, teamNames, titleCase }) => (   
-    <>
-    <h3>Players on pitch:</h3>
-    <ul style={{ display: "flex" }}>
-        { allPlayers.map((current, index) => (
-            <li key={ index }>{ titleCase(current.name) }</li>
-        ))}
-    </ul>
-    <h3>Sorted:</h3>
-    <p>{ randomSort === true ? "Randomly" : "Based on skill level"} </p>
+    <div className="container">
 
-        <section className="container" style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+        <h3>Players on pitch:</h3>
+        <ul style={{ display: "flex" }}>
+            { allPlayers.map((current, index) => (
+                <li className="allPlayerList" key={ index }>{ titleCase(current.name) }</li>
+            ))}
+        </ul>
+
+        <h3>Sorted: { randomSort === true ? "Randomly" : "Based on skill level"}</h3>
+        <section 
+            style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}
+        >
             <ul className="left" style={{ display: "inline-block", width: "50%" }}>{ 
                 <Teams
                     teamNumber={ 1 }
@@ -37,8 +39,8 @@ const Pitch = ({ team1, team2, allPlayers, randomSort, handleEditPlayers, teamNa
             </Button>
 
         </section>
-        </>
-    )
+    </div>
+)
     
     
 

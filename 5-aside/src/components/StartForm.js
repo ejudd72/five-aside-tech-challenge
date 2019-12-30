@@ -75,16 +75,21 @@ const StartForm = ({
                 </>
                 ))
         )}
-        <Button 
-            onClick={ () => handleSubmit("random") }
-            > Sort players Randomly</Button>
-        <Button 
-            onClick={ () => handleSubmit("fair") }
-        > Sort into 2 fair teams  </Button>
-        <Button 
-        variant="danger"
-            onClick={ () => reset() }
-        > Reset form  </Button>
+        <div className="button-panel">
+            <Button 
+                className="button"
+                onClick={ () => handleSubmit("random") }
+                > Sort players Randomly</Button>
+            <Button 
+                className="button"
+                onClick={ () => handleSubmit("fair") }
+            > Sort into 2 fair teams  </Button>
+            <Button 
+                className="button"
+                variant="danger"
+                onClick={ () => reset() }
+            > Reset form  </Button>
+        </div>
         </Form>
         </div>
     )

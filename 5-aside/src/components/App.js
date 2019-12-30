@@ -4,6 +4,7 @@ import StartForm from "./StartForm";
 import Pitch from "./Pitch";
 import Warning from "./Warning";
 import Previous from "./Previous";
+import About from "./About";
 import { fairSort } from "../functions/fairSort";
 import { randomSort } from "../functions/randomSort";
 
@@ -22,6 +23,7 @@ class App extends Component {
             team1: [],
             team2: [],
             showPrevious: false,
+            showAbout: false,
             warning: false, 
             message: ""
         }
@@ -38,7 +40,8 @@ class App extends Component {
         this.handleReset = this.handleReset.bind(this);
         this.handleEditPlayers = this.handleEditPlayers.bind(this);
         this.handleShowPrevious = this.handleShowPrevious.bind(this);
-        
+        this.handleShowAbout = this.handleShowAbout.bind(this);
+
         this.titleCase = this.titleCase.bind(this);
 
     }
@@ -177,6 +180,12 @@ class App extends Component {
         })
     }
 
+    handleShowAbout() {
+        this.setState({
+            showAbout: !this.state.showAbout,
+        })
+    }
+
     handleAcceptWarning() {
         if (this.state.players.length >= 1) {
             this.setState({
@@ -198,13 +207,15 @@ class App extends Component {
     } 
 
  render() {
-    let { players, perTeam, warning, randomSort, submitted, team1, team2, showPrevious, previousTeams, teamNames, message } = this.state;
+    let { players, perTeam, warning, randomSort, submitted, team1, team2, showPrevious, previousTeams, teamNames, message, showAbout } = this.state;
 
     return (
         <>
             <Header 
                 handleShowPrevious={ this.handleShowPrevious }
+                handleShowAbout={ this.handleShowAbout }
                 showPrevious={ showPrevious }
+                showAbout={ showAbout }
             />
             { !showPrevious ? null : (
                 <Previous
@@ -212,13 +223,15 @@ class App extends Component {
                     titleCase={ this.titleCase }
                 />
             )}
+
+            { !showAbout ? null : <About/> }
             { warning ? 
                 <Warning
                     warning={ message }
                     handleAcceptWarning={ this.handleAcceptWarning }
                 /> : null
             }
-            { submitted || showPrevious ? null : 
+            { submitted || showPrevious || showAbout ? null : 
                 <StartForm
                     // method/function props
                     handleAddPlayer={ (e, index) => this.handleAddPlayer(e, index) }
@@ -239,7 +252,7 @@ class App extends Component {
                     
                 />
              } 
-            { !submitted || showPrevious ? null : 
+            { !submitted || showPrevious || showAbout ? null : 
             <Pitch
                 reset={ this.resetPlayers }
                 previousPlayers={ this.previousPlayers }
