@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Table } from "react-bootstrap";
 
 
-const Previous = ({ previousTeams }) => (  
+const Previous = ({ previousTeams, titleCase }) => (  
     
     <div class="container"> 
         { !previousTeams[0] ? "You haven't built any teams this session: please add some players and try again" : (
@@ -22,21 +22,21 @@ const Previous = ({ previousTeams }) => (
                                 <h3>{ index + 1 }</h3>
                             </td>
                             <td>
-                                { current.team1Name }
+                                { titleCase(current.team1Name) }
                             </td>
                             <td>
-                                { current.team2Name }
+                                { titleCase(current.team2Name) }
                             </td>
                         </tr>
                         <tr key={ index }>
                             <td>
                                 { current.team1.map((current, index) => (
-                                    current.name + ", "
-                    )) }
+                                    index <= previousTeams.length - 1 ? titleCase(current.name) + ", " : titleCase(current.name) + ". "
+                                    ))}
                             </td>
                             <td>
                                 { current.team2.map((current, index) => (
-                                    current.name + ", "
+                                    index <= previousTeams.length - 1 ? titleCase(current.name) + ", " : titleCase(current.name) + ". "
                                 )) }
                             </td>
                         </tr>

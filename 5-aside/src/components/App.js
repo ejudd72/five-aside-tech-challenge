@@ -38,6 +38,8 @@ class App extends Component {
         this.handleReset = this.handleReset.bind(this);
         this.handleEditPlayers = this.handleEditPlayers.bind(this);
         this.handleShowPrevious = this.handleShowPrevious.bind(this);
+        
+        this.titleCase = this.titleCase.bind(this);
 
     }
 
@@ -191,6 +193,10 @@ class App extends Component {
         
     }
 
+    titleCase(string) {
+        return string.toLowerCase().replace(string.charAt(0), string.charAt(0).toUpperCase());
+    } 
+
  render() {
     let { players, perTeam, warning, randomSort, submitted, team1, team2, showPrevious, previousTeams, teamNames, message } = this.state;
 
@@ -203,6 +209,7 @@ class App extends Component {
             { !showPrevious ? null : (
                 <Previous
                     previousTeams={ previousTeams }
+                    titleCase={ this.titleCase }
                 />
             )}
             { warning ? 
@@ -242,6 +249,7 @@ class App extends Component {
                 teamNames={ teamNames }
                 randomSort={ randomSort }
                 handleEditPlayers={ this.handleEditPlayers }
+                titleCase={ this.titleCase }
                 /> 
             }
             

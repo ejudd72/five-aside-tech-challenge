@@ -3,12 +3,12 @@ import Teams from "./Teams";
 
 import { Button } from "react-bootstrap";
 
-const Pitch = ({ team1, team2, allPlayers, randomSort, handleEditPlayers, teamNames }) => (   
+const Pitch = ({ team1, team2, allPlayers, randomSort, handleEditPlayers, teamNames, titleCase }) => (   
     <>
     <h3>Players on pitch:</h3>
     <ul style={{ display: "flex" }}>
         { allPlayers.map((current, index) => (
-            <li key={ index }>{ current.name }</li>
+            <li key={ index }>{ titleCase(current.name) }</li>
         ))}
     </ul>
     <h3>Sorted:</h3>
@@ -20,6 +20,7 @@ const Pitch = ({ team1, team2, allPlayers, randomSort, handleEditPlayers, teamNa
                     teamNumber={ 1 }
                     team={ team1 }
                     teamName={ teamNames[0] }
+                    titleCase={ titleCase }
                 /> }
             </ul>
             <ul className="right" style={{ display: "inline-block", width: "50%" }}>{ 
@@ -27,6 +28,7 @@ const Pitch = ({ team1, team2, allPlayers, randomSort, handleEditPlayers, teamNa
                     teamNumber={ 2 }
                     team={ team2 }
                     teamName={ teamNames[1] }
+                    titleCase={ titleCase }
                 /> }
             </ul>
 
