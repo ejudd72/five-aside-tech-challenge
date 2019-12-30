@@ -1,12 +1,15 @@
 import React from "react";
-import { Jumbotron } from "react-bootstrap";
+import { Jumbotron, Button } from "react-bootstrap";
 
-const Header = () => (
+const Header = ({ handleShowPrevious, showPrevious }) => (
+   <>
     <Jumbotron className="header mt-4 mb-0">
 
-        <h1>5-a-Side</h1>
-        
-    </Jumbotron>
+            <h1>5-a-Side</h1>
+
+        </Jumbotron>
+    <Button onClick={ handleShowPrevious }>{ showPrevious ? "Close Previous Teams" : "Show Previous Teams" } </Button>
+    </>
 );
 
 export default Header;

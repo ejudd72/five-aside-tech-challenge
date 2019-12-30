@@ -25,6 +25,24 @@ const StartForm = ({
             <Form 
                 className="card" style={{ padding: 20, margin: 20 }}
             >
+            <InputGroup>
+                <label>Name</label>
+                <FormControl
+                    onChange={ (e) => handleAddPlayer(e, index)}
+                    value={ players[index].name }
+                    key={ index }
+                    type="text"
+                />
+
+                <label>Name</label>
+                <FormControl
+                    onChange={ (e) => handleAddPlayer(e, index)}
+                    value={ players[index].name }
+                    key={ index }
+                    type="text"
+                />
+
+            </InputGroup>
             {/* create player inputs for each objeoct in the players array currently  */}
             { submitted ? null : (
                 players.map((_, index) => (

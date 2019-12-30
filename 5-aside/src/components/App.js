@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Header from "./Header";
 import StartForm from "./StartForm";
 import Pitch from "./Pitch";
+import Previous from "./Previous";
+
 import { fairSort } from "../functions/fairSort";
 import { randomSort } from "../functions/randomSort";
 
@@ -13,10 +15,12 @@ class App extends Component {
         this.state = {
             submitted: false,
             perTeam: 5,
+            previousTeams: [],
             players: this.generateEmptyPlayers(10),
             randomSort: true,
             team1: [],
-            team2: []
+            team2: [],
+            showPrevious: false,
         }
 
         this.handleAddField = this.handleAddField.bind(this);
@@ -28,6 +32,8 @@ class App extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleReset = this.handleReset.bind(this);
         this.handleEditPlayers = this.handleEditPlayers.bind(this);
+        this.handleShowPrevious = this.handleShowPrevious.bind(this);
+
     }
 
     //function to generate a number of empty player objects with properties: default is 10
@@ -81,7 +87,7 @@ class App extends Component {
     }
 
     handleSubmit(type){
-        let { players } = this.state;
+        let { players, previousTeams } = this.state;
     
         // filters all players have been assigned names? this is so that any blank fields submitted by the user aren't taken into account
         let truePlayers = players.filter(current => {
@@ -104,6 +110,7 @@ class App extends Component {
             submitted: true,
             team1: splitTeams.team1,
             team2: splitTeams.team2,
+            previousTeams: [...previousTeams, splitTeams],
             randomSort: type === "random" ? true : false,
         });
 
@@ -122,14 +129,28 @@ class App extends Component {
         })
     }
 
+    handleShowPrevious() {
+        this.setState({
+            showPrevious: !this.state.showPrevious,
+        })
+    }
+
  render() {
-    let { players, perTeam, warning, randomSort, submitted, subs, team1, team2, } = this.state;
+    let { players, perTeam, warning, randomSort, submitted, subs, team1, team2, showPrevious, previousTeams } = this.state;
 
     return (
         <>
-            <Header />
+            <Header 
+                handleShowPrevious={ this.handleShowPrevious }
+                showPrevious={ showPrevious }
+            />
+            { !showPrevious ? null : (
+                <Previous
+                    previousTeams={ previousTeams }
+                />
+            )}
 
-            { submitted ? null : 
+            { submitted || showPrevious ? null : 
                 <StartForm
                     handleAddPlayer={ (e, index) => this.handleAddPlayer(e, index) }
                     handleAddSkill={ (e, index) => this.handleAddSkill(e, index) }
@@ -145,7 +166,7 @@ class App extends Component {
                     reset={ this.handleReset }
                 />
              } 
-            { !submitted ? null : 
+            { !submitted || showPrevious ? null : 
             <Pitch
                 reset={ this.resetPlayers }
                 previousPlayers={ this.previousPlayers }
@@ -156,6 +177,7 @@ class App extends Component {
                 handleEditPlayers={ this.handleEditPlayers }
                 /> 
             }
+            
             </>
         )
     };
