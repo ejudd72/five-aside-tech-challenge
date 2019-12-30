@@ -144,13 +144,13 @@ class App extends Component {
     // }
 
  render() {
-    let { players, perTeam, warning, randomSort, submitted, subs } = this.state;
+    let { players, perTeam, warning, randomSort, submitted, subs, team1, team2 } = this.state;
 
     return (
         <>
             <Header />
 
-            {/* { submitted ? null :  */}
+            { submitted ? null : 
                 <StartForm
                     handleAddPlayer={ (e, index) => this.handleAddPlayer(e, index) }
                     handleAddSkill={ (e, index) => this.handleAddSkill(e, index) }
@@ -165,17 +165,30 @@ class App extends Component {
                     subs={ subs }
                     reset={ this.handleReset }
                 />
-            {/* } */}
-            {/* { !submitted ? null : 
+             } 
+            { !submitted ? null : 
+            // <Pitch>
+            <>
                 <Teams 
                     allPlayers={ players }
+                    team={ team1 }
+                    teamNumber={ 1 }
+                    className={ "team1" }
                     // reset={ this.resetPlayers }
                     // previousPlayers={ this.previousPlayers }
                     // splitTeamsRandom={ (players) => this.splitTeamsRandom(players) }
                     // splitTeamsFair={ (players) => this.splitTeamsFair(players) }
+                /> 
 
-                /> */}
-            {/* } */}
+                <Teams
+                    allPlayers={ players }
+                    team={ team2 }
+                    teamNumber={ 2 }
+                    className={ "team2" }
+                />
+                </>
+            // /* </Pitch> */
+            }
             {/* } */}
 
             {/* refigure this bit! */}
