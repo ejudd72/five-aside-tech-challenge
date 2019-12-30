@@ -49,8 +49,9 @@ class App extends Component {
     }
 
     handleAddField(){
+        let { players  } = this.state;
         this.setState({ 
-            players: [...this.state.players, { name: "", skill: 5 }, { name: "", skill: 5 }],
+            players: players.length < 40 ? [...players, { name: "", skill: 5 }, { name: "", skill: 5 }] : [...players],
             perTeam: this.state.perTeam + 1, 
         });
     }
@@ -59,9 +60,9 @@ class App extends Component {
         let { players } = this.state;
         this.setState({ 
             //remove two (one per team) final empty player objects from array
-            players: players.filter((_, index) => {
+            players: players.length > 2 ? players.filter((_, index) => {
                 return index < players.length - 2
-            }), 
+            }) : [...players], 
             perTeam: this.state.perTeam - 1, 
         });
     }
@@ -122,12 +123,12 @@ class App extends Component {
             submitted: true,
             team1: splitTeams.team1,
             team2: splitTeams.team2,
-            previousTeams: [...previousTeams, {
+            previousTeams: [{
                 team1Name: this.state.teamNames[0], 
                 team2Name: this.state.teamNames[1],
                 team1: splitTeams.team1, 
                 team2: splitTeams.team2
-            }],
+            }, ...previousTeams],
             randomSort: type === "random" ? true : false,
         });
 
