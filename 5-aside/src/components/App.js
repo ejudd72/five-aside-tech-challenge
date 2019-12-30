@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from "./Header";
 import StartForm from "./StartForm";
-import Teams from "./Teams";
+import Pitch from "./Pitch";
 import { fairSort } from "../functions/fairSort";
 import { randomSort } from "../functions/randomSort";
 
@@ -12,10 +12,8 @@ class App extends Component {
 
         this.state = {
             submitted: false,
-            // perTeam: 5,
+            perTeam: 5,
             players: this.generateEmptyPlayers(10),
-            warning: false,
-            subs: false,
             randomSort: true,
             team1: [],
             team2: []
@@ -29,10 +27,10 @@ class App extends Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleReset = this.handleReset.bind(this);
-
+        this.handleEditPlayers = this.handleEditPlayers.bind(this);
     }
 
-    //function to generate the number of empty player objects with properties
+    //function to generate a number of empty player objects with properties: default is 10
     generateEmptyPlayers(number) {
         let players = [];
 
@@ -52,9 +50,10 @@ class App extends Component {
     handleRemoveField(){
         let { players } = this.state;
         this.setState({ 
+            //remove two (one per team) final empty player objects from array
             players: players.filter((_, index) => {
                 return index < players.length - 2
-            }), //remove two final items from the array 
+            }), 
             perTeam: this.state.perTeam - 1, 
         });
     }
@@ -82,69 +81,49 @@ class App extends Component {
     }
 
     handleSubmit(type){
-        let { players, warning, submitted } = this.state;
+        let { players } = this.state;
     
-        // filters all players have been assigned names?
+        // filters all players have been assigned names? this is so that any blank fields submitted by the user aren't taken into account
         let truePlayers = players.filter(current => {
             return current.name !== "";
         });
 
-        // if the number of players in the array after it's been filtered is odd then it will equate to false; the 'warning' in this state will be triggered. 
-        // let oddCheck = truePlayers.length % 2 !== 0 || players.length === 0;
-
         let splitTeams = {};
 
         if (type === "random") {
+            // function will sort the players into 2 random teams and return an object with properties team1 and team2
             splitTeams = randomSort(truePlayers);
         } else {
+            // function will sort the players into 2 teams based on skill level and return an object with properties team1 and team2
             splitTeams = fairSort(truePlayers);
         }
-
-        console.log("players: ", truePlayers)
-        console.log(" perTeam: ", Math.round(truePlayers.length / 2))
-        console.log("submitted: ", true)
-            // warning: oddCheck,
-        console.log("team1:", splitTeams.team1)
-        console.log("team2: ", splitTeams.team2)
-        console.log("randomSort: ", type === "random" ? true : false)
 
         this.setState({ 
             players: truePlayers,
             perTeam: Math.round(truePlayers.length / 2),
             submitted: true,
-            // warning: oddCheck,
             team1: splitTeams.team1,
             team2: splitTeams.team2,
             randomSort: type === "random" ? true : false,
         });
 
-        
-        // if (!warning && submitted) {
-        //     handleSave({...this.state});
-        // } 
     }
 
     handleReset() {
         this.setState({
             players: this.generateEmptyPlayers(10),
+            submitted: false,
         })
     }
-    // handleAcceptSubs(e) {
-    //     this.setState({
-    //         subs: true,
-    //         warning: false,
-    //     })
-    // }
 
-    // // consider using this as closing text instead
-    // handleAcceptDefault(e) {
-    //     this.setState({
-    //         warning: false,
-    //     })
-    // }
+    handleEditPlayers() {
+        this.setState({
+            submitted: false,
+        })
+    }
 
  render() {
-    let { players, perTeam, warning, randomSort, submitted, subs, team1, team2 } = this.state;
+    let { players, perTeam, warning, randomSort, submitted, subs, team1, team2, } = this.state;
 
     return (
         <>
@@ -167,39 +146,17 @@ class App extends Component {
                 />
              } 
             { !submitted ? null : 
-            // <Pitch>
-            <>
-                <Teams 
-                    allPlayers={ players }
-                    team={ team1 }
-                    teamNumber={ 1 }
-                    className={ "team1" }
-                    // reset={ this.resetPlayers }
-                    // previousPlayers={ this.previousPlayers }
-                    // splitTeamsRandom={ (players) => this.splitTeamsRandom(players) }
-                    // splitTeamsFair={ (players) => this.splitTeamsFair(players) }
+            <Pitch
+                reset={ this.resetPlayers }
+                previousPlayers={ this.previousPlayers }
+                allPlayers={ players }
+                team1={ team1 }
+                team2={ team2 }
+                randomSort={ randomSort }
+                handleEditPlayers={ this.handleEditPlayers }
                 /> 
-
-                <Teams
-                    allPlayers={ players }
-                    team={ team2 }
-                    teamNumber={ 2 }
-                    className={ "team2" }
-                />
-                </>
-            // /* </Pitch> */
             }
-            {/* } */}
-
-            {/* refigure this bit! */}
-            {/* { submitted && warning ? <Alert
-                message={ this.state.players.length % 2 !== 0 ? "You've entered an odd number of players. Are you happy to add an extra player to a team?" : "You haven't entered any players - would you like to submit again?" : null } */}
-            {/*        
-            <hr/>
-            <Loading>
-                <Result/>
-            </Loading> */}
-        </>
+            </>
         )
     };
 }
