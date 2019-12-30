@@ -7,6 +7,8 @@ const StartForm = ({
     handleAddField,
     handleRemoveField,
     handleSubmit,
+    handleAddTeamName, 
+    teamNames,
     players,
     submitted,
     reset
@@ -26,20 +28,20 @@ const StartForm = ({
                 className="card" style={{ padding: 20, margin: 20 }}
             >
             <InputGroup>
-                <label>Name</label>
+                <label>Team 1 Name</label>
                 <FormControl
-                    onChange={ (e) => handleAddPlayer(e, index)}
-                    value={ players[index].name }
-                    key={ index }
+                    onChange={ (e) => handleAddTeamName(e, 1)}
+                    value={ teamNames[0] }
                     type="text"
+                    placeholder="Team 1"
                 />
 
-                <label>Name</label>
+                <label>Team 2 Name</label>
                 <FormControl
-                    onChange={ (e) => handleAddPlayer(e, index)}
-                    value={ players[index].name }
-                    key={ index }
+                    onChange={ (e) => handleAddTeamName(e, 2)}
+                    value={ teamNames[1] }
                     type="text"
+                    placeholder="Team 2"
                 />
 
             </InputGroup>

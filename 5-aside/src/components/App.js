@@ -18,6 +18,7 @@ class App extends Component {
             previousTeams: [],
             players: this.generateEmptyPlayers(10),
             randomSort: true,
+            teamNames: ["Team 1", "Team 2"],
             team1: [],
             team2: [],
             showPrevious: false,
@@ -26,6 +27,7 @@ class App extends Component {
         this.handleAddField = this.handleAddField.bind(this);
         this.handleRemoveField = this.handleRemoveField.bind(this);
 
+        this.handleAddTeamName = this.handleAddTeamName.bind(this);
         this.handleAddPlayer = this.handleAddPlayer.bind(this);
         this.handleAddSkill = this.handleAddSkill.bind(this);
 
@@ -62,6 +64,16 @@ class App extends Component {
             }), 
             perTeam: this.state.perTeam - 1, 
         });
+    }
+
+    handleAddTeamName(e, teamNo){
+        // copy the current players array
+        let newTeamNames = [...this.state.teamNames];
+
+        newTeamNames[teamNo - 1] = e.currentTarget.value;
+
+        //re-setting the state with a new version of this array
+        this.setState({ teamNames: newTeamNames });
     }
 
     handleAddPlayer(e, index){
@@ -110,7 +122,12 @@ class App extends Component {
             submitted: true,
             team1: splitTeams.team1,
             team2: splitTeams.team2,
-            previousTeams: [...previousTeams, splitTeams],
+            previousTeams: [...previousTeams, {
+                team1Name: this.state.teamNames[0], 
+                team2Name: this.state.teamNames[1],
+                team1: splitTeams.team1, 
+                team2: splitTeams.team2
+            }],
             randomSort: type === "random" ? true : false,
         });
 
@@ -136,7 +153,7 @@ class App extends Component {
     }
 
  render() {
-    let { players, perTeam, warning, randomSort, submitted, subs, team1, team2, showPrevious, previousTeams } = this.state;
+    let { players, perTeam, warning, randomSort, submitted, subs, team1, team2, showPrevious, previousTeams, teamNames } = this.state;
 
     return (
         <>
@@ -152,18 +169,23 @@ class App extends Component {
 
             { submitted || showPrevious ? null : 
                 <StartForm
+                    // method/function props
                     handleAddPlayer={ (e, index) => this.handleAddPlayer(e, index) }
                     handleAddSkill={ (e, index) => this.handleAddSkill(e, index) }
+                    handleAddTeamName={ (e, teamNo) => this.handleAddTeamName(e, teamNo)}
                     handleAddField={ this.handleAddField }
                     handleRemoveField={ this.handleRemoveField }
                     handleSubmit={ (e, type) => this.handleSubmit(e, type) }
+                    reset={ this.handleReset }
+
+                    // State-related props
                     perTeam={ perTeam }
                     players={ players }
                     warning={ warning }
                     randomSort={ randomSort }
                     submitted={ submitted }
-                    subs={ subs }
-                    reset={ this.handleReset }
+                    teamNames={ teamNames }
+                    
                 />
              } 
             { !submitted || showPrevious ? null : 
@@ -173,6 +195,7 @@ class App extends Component {
                 allPlayers={ players }
                 team1={ team1 }
                 team2={ team2 }
+                teamNames={ teamNames }
                 randomSort={ randomSort }
                 handleEditPlayers={ this.handleEditPlayers }
                 /> 

@@ -3,7 +3,7 @@ import Teams from "./Teams";
 
 import { Button } from "react-bootstrap";
 
-const Pitch = ({ team1, team2, allPlayers, randomSort, handleEditPlayers }) => (   
+const Pitch = ({ team1, team2, allPlayers, randomSort, handleEditPlayers, teamNames }) => (   
     <>
     <h3>Players on pitch:</h3>
     <ul style={{ display: "flex" }}>
@@ -19,12 +19,14 @@ const Pitch = ({ team1, team2, allPlayers, randomSort, handleEditPlayers }) => (
                 <Teams
                     teamNumber={ 1 }
                     team={ team1 }
+                    teamName={ teamNames[0] }
                 /> }
             </ul>
             <ul className="right" style={{ display: "inline-block", width: "50%" }}>{ 
                 <Teams
                     teamNumber={ 2 }
                     team={ team2 }
+                    teamName={ teamNames[1] }
                 /> }
             </ul>
 
