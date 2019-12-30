@@ -8,7 +8,7 @@ const Header = ({ handleShowPrevious, showPrevious }) => (
             <h1>5-a-Side Team Builder</h1>
 
         </Jumbotron>
-    <Button onClick={ handleShowPrevious }>{ showPrevious ? "Close Previous Teams" : "Show Previous Teams" } </Button>
+    <Button className="togglePrevious" onClick={ handleShowPrevious }>{ showPrevious ? "Close Previous Teams" : "Show Previous Teams" } </Button>
     </>
 );
 

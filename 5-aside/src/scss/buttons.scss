@@ -1,0 +1,32 @@
+// Input form buttons
+.fields-button {
+    position: absolute;
+    top: 40vw;
+    max-width: 10%;
+    z-index: 20;
+    border-color: grey;
+    .fields-button:hover {
+        background-color: black;
+    }
+}
+
+.add-player-button {
+    background-color: green;
+    left: 0px;
+}
+.remove-player-button {
+    background-color: red;
+    right: 0px;
+}
+
+.togglePrevious {
+    position: sticky;
+    display: block;
+    margin: 10px auto;
+    background-color: darkgrey;
+
+    .togglePrevious:hover {
+        background-color: black;
+
+    }
+}

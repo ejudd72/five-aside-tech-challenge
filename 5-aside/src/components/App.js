@@ -176,12 +176,15 @@ class App extends Component {
     }
 
     handleAcceptWarning() {
-        if (this.state.players.length > 1) {
+        if (this.state.players.length >= 1) {
             this.setState({
                 warning: false,
                 submitted: true
             })
         } else {
+            this.setState({ 
+                warning: false,
+            })
             this.handleReset();
         }
 

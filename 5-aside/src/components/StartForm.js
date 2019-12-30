@@ -17,11 +17,13 @@ const StartForm = ({
             <Button  
                 type="number"
                 onClick={ handleAddField }
+                className="add-player-button fields-button"
             >Add more Players </Button>  
 
             <Button  
                 type="number"
                 onClick={ handleRemoveField }
+                className="remove-player-button fields-button"
             >Use fewer Players </Button>  
 
             <Form 

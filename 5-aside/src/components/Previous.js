@@ -10,6 +10,7 @@ const Previous = ({ previousTeams }) => (
             <h2>Previous team splits</h2>
             <Table striped>
                 <thead>
+                    <th>Game Number</th>
                     <th>Team 1</th>
                     <th>Team 2</th>
                 </thead>
@@ -18,7 +19,7 @@ const Previous = ({ previousTeams }) => (
                         <>
                         <tr>
                             <td rowspan="2">
-                                { index + 1 }
+                                <h3>{ index + 1 }</h3>
                             </td>
                             <td>
                                 { current.team1Name }

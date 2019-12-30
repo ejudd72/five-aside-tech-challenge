@@ -1,0 +1,15 @@
+.alert-contain {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 20vh;
+    
+    z-index: 100;
+
+    .form-submit-alert {
+        width: 33%;
+        max-width: 400px;
+        position: relative;
+        left: 33%;
+    }
+}

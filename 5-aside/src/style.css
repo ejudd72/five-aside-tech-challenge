@@ -6,4 +6,67 @@
   margin: 30px;
 }
 
+.alert-contain {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 20vh;
+  z-index: 100;
+}
+.alert-contain .form-submit-alert {
+  width: 33%;
+  max-width: 400px;
+  position: relative;
+  left: 33%;
+}
+
+.fields-button {
+  position: absolute;
+  top: 40vw;
+  max-width: 10%;
+  z-index: 20;
+  border-color: grey;
+}
+
+.add-player-button {
+  background-color: green;
+  left: 0px;
+}
+
+.remove-player-button {
+  background-color: red;
+  right: 0px;
+}
+
+.fields-button {
+  position: absolute;
+  top: 40vw;
+  max-width: 10%;
+  z-index: 20;
+  border-color: grey;
+}
+.fields-button .fields-button:hover {
+  background-color: black;
+}
+
+.add-player-button {
+  background-color: green;
+  left: 0px;
+}
+
+.remove-player-button {
+  background-color: red;
+  right: 0px;
+}
+
+.togglePrevious {
+  position: sticky;
+  display: block;
+  margin: 10px auto;
+  background-color: darkgrey;
+}
+.togglePrevious .togglePrevious:hover {
+  background-color: black;
+}
+
 /*# sourceMappingURL=style.css.map */
