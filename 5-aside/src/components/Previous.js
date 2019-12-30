@@ -5,7 +5,7 @@ import { Button, Table } from "react-bootstrap";
 const Previous = ({ previousTeams }) => (  
     
     <div class="container"> 
-        { !previousTeams[0] ? "You haven't added any teams this session: please add some players and try again" : (
+        { !previousTeams[0] ? "You haven't built any teams this session: please add some players and try again" : (
         <>
             <h2>Previous team splits</h2>
             <Table striped>

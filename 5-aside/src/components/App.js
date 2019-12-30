@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Header from "./Header";
 import StartForm from "./StartForm";
 import Pitch from "./Pitch";
+import Warning from "./Warning";
 import Previous from "./Previous";
-
 import { fairSort } from "../functions/fairSort";
 import { randomSort } from "../functions/randomSort";
 
@@ -22,6 +22,8 @@ class App extends Component {
             team1: [],
             team2: [],
             showPrevious: false,
+            warning: false, 
+            message: ""
         }
 
         this.handleAddField = this.handleAddField.bind(this);
@@ -32,6 +34,7 @@ class App extends Component {
         this.handleAddSkill = this.handleAddSkill.bind(this);
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleAcceptWarning = this.handleAcceptWarning.bind(this);
         this.handleReset = this.handleReset.bind(this);
         this.handleEditPlayers = this.handleEditPlayers.bind(this);
         this.handleShowPrevious = this.handleShowPrevious.bind(this);
@@ -117,10 +120,27 @@ class App extends Component {
             splitTeams = fairSort(truePlayers);
         }
 
+        // validation function - to give specific message if there is a problem
+        let validate = () => {
+            if ( truePlayers.length < 1 ){
+                return "You haven't yet added any players: please add some players and try again" 
+            } else if( truePlayers.length % 2 === 1 ){
+                return "You have entered an odd number of players. One team will have one extra player. Is this ok?"
+            } else {
+                return ""
+            }
+        }
+
+        // will return true or false for validation
+        let numCheck = () => {
+            return truePlayers.length < 1 || truePlayers.length % 2 === 1;
+        }
+
         this.setState({ 
             players: truePlayers,
             perTeam: Math.round(truePlayers.length / 2),
-            submitted: true,
+            //if no players have been added or an odd number of players has been added, user needs to accept a warning before form will be submitted
+            submitted: validate() === "" ? true : false,
             team1: splitTeams.team1,
             team2: splitTeams.team2,
             previousTeams: [{
@@ -130,6 +150,8 @@ class App extends Component {
                 team2: splitTeams.team2
             }, ...previousTeams],
             randomSort: type === "random" ? true : false,
+            message: validate(),
+            warning: numCheck(),
         });
 
     }
@@ -153,8 +175,21 @@ class App extends Component {
         })
     }
 
+    handleAcceptWarning() {
+        if (this.state.players.length > 1) {
+            this.setState({
+                warning: false,
+                submitted: true
+            })
+        } else {
+            this.handleReset();
+        }
+
+        
+    }
+
  render() {
-    let { players, perTeam, warning, randomSort, submitted, subs, team1, team2, showPrevious, previousTeams, teamNames } = this.state;
+    let { players, perTeam, warning, randomSort, submitted, team1, team2, showPrevious, previousTeams, teamNames, message } = this.state;
 
     return (
         <>
@@ -167,7 +202,12 @@ class App extends Component {
                     previousTeams={ previousTeams }
                 />
             )}
-
+            { warning ? 
+                <Warning
+                    warning={ message }
+                    handleAcceptWarning={ this.handleAcceptWarning }
+                /> : null
+            }
             { submitted || showPrevious ? null : 
                 <StartForm
                     // method/function props
