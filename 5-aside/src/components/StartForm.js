@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { FormControl, InputGroup, Button, Form, Alert } from "react-bootstrap";
 
-const StartForm = ({ handleAddPlayer, 
+const StartForm = ({ 
+    handleAddPlayer, 
     handleAddSkill,
     handleAddField,
     handleRemoveField,
-    handleRandomSubmit,
-    handleFairSubmit,
-    perTeam,
+    handleSubmit,
+    // perTeam,
     players,
     warning,
     randomSort,
     submitted,
     subs,
+    reset
 }) => (   //    warning ? (
             //    <Alert dismissable>
             //        
@@ -43,7 +44,7 @@ const StartForm = ({ handleAddPlayer,
                     className="card" style={{ padding: 20, margin: 20 }}
                 >
                 {/* create player inputs for each objeoct in the players array currently  */}
-                { players.map((_, index) => (
+                { submitted ? null : players.map((_, index) => (
                     <>
                 
                     <h5> Player {index + 1} </h5>
@@ -71,12 +72,15 @@ const StartForm = ({ handleAddPlayer,
                 
                 ))}
             <Button 
-                onClick={ handleRandomSubmit }
+                onClick={ () => handleSubmit("random") }
                 > Sort players Randomly</Button>
             <Button 
-                onClick={ handleFairSubmit }
-            > Sort into 2 fair teams
-            </Button>
+                onClick={ () => handleSubmit("fair") }
+            > Sort into 2 fair teams  </Button>
+            <Button 
+            variant="danger"
+                onClick={ () => reset() }
+            > Reset form  </Button>
             </Form>
             </div>
         )

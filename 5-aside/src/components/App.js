@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Header from "./Header";
 import StartForm from "./StartForm";
-
-
-
+import Teams from "./Teams";
+import { fairSort } from "../functions/fairSort";
+import { randomSort } from "../functions/randomSort";
 
 class App extends Component {
 
@@ -12,11 +12,13 @@ class App extends Component {
 
         this.state = {
             submitted: false,
-            perTeam: 5,
+            // perTeam: 5,
             players: this.generateEmptyPlayers(10),
             warning: false,
             subs: false,
             randomSort: true,
+            team1: [],
+            team2: []
         }
 
         this.handleAddField = this.handleAddField.bind(this);
@@ -25,8 +27,9 @@ class App extends Component {
         this.handleAddPlayer = this.handleAddPlayer.bind(this);
         this.handleAddSkill = this.handleAddSkill.bind(this);
 
-        this.handleRandomSubmit = this.handleRandomSubmit.bind(this);
-        this.handleFairSubmit = this.handleFairSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleReset = this.handleReset.bind(this);
+
     }
 
     //function to generate the number of empty player objects with properties
@@ -78,105 +81,114 @@ class App extends Component {
         this.setState({ players: newPlayers });
     }
 
-    handleRandomSubmit(){
-        let { handleSave } = this.props;
+    handleSubmit(type){
         let { players, warning, submitted } = this.state;
     
-        // how many players have been assigned names?
+        // filters all players have been assigned names?
         let truePlayers = players.filter(current => {
             return current.name !== "";
         });
 
         // if the number of players in the array after it's been filtered is odd then it will equate to false; the 'warning' in this state will be triggered. 
-        let oddCheck = truePlayers.length % 2 !== 0 || players.length === 0;
+        // let oddCheck = truePlayers.length % 2 !== 0 || players.length === 0;
+
+        let splitTeams = {};
+
+        if (type === "random") {
+            splitTeams = randomSort(truePlayers);
+        } else {
+            splitTeams = fairSort(truePlayers);
+        }
+
+        console.log("players: ", truePlayers)
+        console.log(" perTeam: ", Math.round(truePlayers.length / 2))
+        console.log("submitted: ", true)
+            // warning: oddCheck,
+        console.log("team1:", splitTeams.team1)
+        console.log("team2: ", splitTeams.team2)
+        console.log("randomSort: ", type === "random" ? true : false)
 
         this.setState({ 
             players: truePlayers,
+            perTeam: Math.round(truePlayers.length / 2),
             submitted: true,
-            warning: oddCheck,
-            randomSort: true
+            // warning: oddCheck,
+            team1: splitTeams.team1,
+            team2: splitTeams.team2,
+            randomSort: type === "random" ? true : false,
         });
 
-        if (!warning && submitted) {
-            handleSave({...this.state});
-        } 
+        
+        // if (!warning && submitted) {
+        //     handleSave({...this.state});
+        // } 
     }
 
-    handleFairSubmit(){
-
-        let { handleSave } = this.props;
-        let { players, warning, submitted } = this.state;
-    
-        // how many players have been assigned names?
-        let truePlayers = players.filter(current => {
-            return current.name !== "";
-        });
-
-        // if the number of players in the array after it's been filtered is odd then it will equate to false; the 'warning' in this state will be triggered. 
-        let oddCheck = truePlayers.length % 2 !== 0 || players.length === 0;
-
-        this.setState({ 
-            players: truePlayers,
-            submitted: true,
-            warning: oddCheck,
-            randomSort: false
-        });
-
-        if (!warning && submitted) {
-            handleSave({...this.state});
-        } 
-    }
-
-    handleAcceptSubs(e) {
+    handleReset() {
         this.setState({
-            subs: true,
-            warning: false,
+            players: this.generateEmptyPlayers(10),
         })
     }
+    // handleAcceptSubs(e) {
+    //     this.setState({
+    //         subs: true,
+    //         warning: false,
+    //     })
+    // }
 
-    // consider using this as closing text instead
-    handleAcceptDefault(e) {
-        this.setState({
-            warning: false,
-        })
-    }
+    // // consider using this as closing text instead
+    // handleAcceptDefault(e) {
+    //     this.setState({
+    //         warning: false,
+    //     })
+    // }
 
  render() {
     let { players, perTeam, warning, randomSort, submitted, subs } = this.state;
 
     return (
-    <>
-    
-        <Header />
+        <>
+            <Header />
 
-        { submitted && !warning ? null : 
-        <StartForm
-            handleAddPlayer={ (e) => this.handleAddPlayer(e) }
-            handleAddSkill={ (e) => this.handleAddSkill(e) }
-            handleAddField={ this.handleAddField }
-            handleRemoveField={ this.handleRemoveField }
-            handleRandomSubmit={ this.handleRandomSubmit }
-            handleFairSubmit={ this.handleFairSubmit }
-            perTeam={ perTeam }
-            players={ players }
-            warning={ warning }
-            randomSort={ randomSort }
-            submitted={ submitted }
-            subs={ subs }
-        />
-        }
+            {/* { submitted ? null :  */}
+                <StartForm
+                    handleAddPlayer={ (e, index) => this.handleAddPlayer(e, index) }
+                    handleAddSkill={ (e, index) => this.handleAddSkill(e, index) }
+                    handleAddField={ this.handleAddField }
+                    handleRemoveField={ this.handleRemoveField }
+                    handleSubmit={ (e, type) => this.handleSubmit(e, type) }
+                    perTeam={ perTeam }
+                    players={ players }
+                    warning={ warning }
+                    randomSort={ randomSort }
+                    submitted={ submitted }
+                    subs={ subs }
+                    reset={ this.handleReset }
+                />
+            {/* } */}
+            {/* { !submitted ? null : 
+                <Teams 
+                    allPlayers={ players }
+                    // reset={ this.resetPlayers }
+                    // previousPlayers={ this.previousPlayers }
+                    // splitTeamsRandom={ (players) => this.splitTeamsRandom(players) }
+                    // splitTeamsFair={ (players) => this.splitTeamsFair(players) }
 
-        {/* refigure this bit! */}
-        {/* { submitted && warning ? <Alert
-            message={ this.state.players.length % 2 !== 0 ? "You've entered an odd number of players. Are you happy to add an extra player to a team?" : "You haven't entered any players - would you like to submit again?" : null } */}
-{/*        
-        <hr/>
-        <Loading>
-            <Result/>
-        </Loading> */}
-    </>
-    )
- };
+                /> */}
+            {/* } */}
+            {/* } */}
+
+            {/* refigure this bit! */}
+            {/* { submitted && warning ? <Alert
+                message={ this.state.players.length % 2 !== 0 ? "You've entered an odd number of players. Are you happy to add an extra player to a team?" : "You haven't entered any players - would you like to submit again?" : null } */}
+            {/*        
+            <hr/>
+            <Loading>
+                <Result/>
+            </Loading> */}
+        </>
+        )
+    };
 }
 
 export default App;
