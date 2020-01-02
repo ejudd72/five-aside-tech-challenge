@@ -21,5 +21,6 @@ export const randomSort = (players) => {
         return index >= shuffled.length / 2;
     }) 
 
+    console.log("split randomly!!");
     return { team1: team1(shuffled), team2: team2(shuffled)};
 }

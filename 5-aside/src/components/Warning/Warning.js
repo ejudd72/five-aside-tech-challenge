@@ -1,13 +1,13 @@
 import React from 'react';
 import { Button, Alert } from "react-bootstrap";
 
-const Warning = ({ warning, handleAcceptWarning }) => (  
-   
+const Warning = ({ message, warning, handleAcceptWarning }) => (  
+   !warning ? null : (
     <div className="alert-contain">
     <Alert variant="danger" className="form-submit-alert">
       <Alert.Heading>Please check your players</Alert.Heading>
       <p>
-        { warning }
+        { message }
       </p>
       <hr />
       <div className="d-flex justify-content-end">
@@ -18,6 +18,7 @@ const Warning = ({ warning, handleAcceptWarning }) => (
     </Alert>
 
   </div>
+   )
 )
 
 

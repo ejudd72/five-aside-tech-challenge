@@ -1,9 +1,12 @@
 import React from 'react';
-import { Button, Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 
 
-const Previous = ({ previousTeams, titleCase }) => (  
-    
+const Previous = ({ previousTeams, showPrevious }) => (  
+    // console.log(previousTeams),
+    // null
+// )
+    !showPrevious ? null : 
     <div class="container"> 
         { !previousTeams[0] ? "You haven't built any teams this session: please add some players and try again" : (
         <>
@@ -22,21 +25,21 @@ const Previous = ({ previousTeams, titleCase }) => (
                                 <h3>{ index + 1 }</h3>
                             </td>
                             <td>
-                                { titleCase(current.team1Name) }
+                                { current.team1Name }
                             </td>
                             <td>
-                                { titleCase(current.team2Name) }
+                                { current.team2Name }
                             </td>
                         </tr>
                         <tr key={ index }>
                             <td>
                                 { current.team1.map((current, index) => (
-                                    index <= previousTeams.length - 1 ? titleCase(current.name) + ", " : titleCase(current.name) + ". "
-                                    ))}
+                                    index === previousTeams.length - 1 ? current.name + ". " : current.name + ", "
+                                ))}
                             </td>
                             <td>
                                 { current.team2.map((current, index) => (
-                                    index <= previousTeams.length - 1 ? titleCase(current.name) + ", " : titleCase(current.name) + ". "
+                                    index === previousTeams.length - 1 ? current.name + ". " : current.name + ", "
                                 )) }
                             </td>
                         </tr>

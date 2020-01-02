@@ -59,14 +59,48 @@
   right: 0px;
 }
 
-.togglePrevious {
-  position: sticky;
+.toggleButtonPanel {
+  display: flex;
+  position: absolute;
+  top: 30px;
+  right: 50px;
   display: block;
-  margin: 10px auto;
-  background-color: darkgrey;
 }
-.togglePrevious .togglePrevious:hover {
+.toggleButtonPanel .togglePrevious {
+  background-color: darkgrey;
+  margin: 10px;
+}
+.toggleButtonPanel .togglePrevious:hover {
   background-color: black;
+}
+
+.button-panel {
+  display: flex;
+  justify-content: center;
+}
+.button-panel .button {
+  margin: 10px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+th {
+  text-align: center;
+  padding: 10px;
+}
+
+label {
+  padding: 10px;
+  display: block;
+}
+
+ul {
+  list-style: none;
+  margin-left: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */

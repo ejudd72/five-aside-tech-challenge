@@ -19,14 +19,29 @@
     right: 0px;
 }
 
-.togglePrevious {
-    position: sticky;
+.toggleButtonPanel {
+    display: flex;
+    position: absolute;
+    top: 30px;
+    right: 50px;
     display: block;
-    margin: 10px auto;
-    background-color: darkgrey;
+    
+    .togglePrevious {
+        background-color: darkgrey;
+        margin: 10px;
+    }
 
     .togglePrevious:hover {
         background-color: black;
+    }
+}
 
+// submit form buttons 
+.button-panel {
+    display: flex;
+    justify-content: center;
+
+    .button {
+        margin: 10px;
     }
 }
