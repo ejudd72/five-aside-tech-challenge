@@ -1,15 +1,27 @@
 import React from 'react';
-import Teams from "./Teams";
+import Teams from "../Teams";
 
 import { Button } from "react-bootstrap";
 
-const Pitch = ({ team1, team2, allPlayers, randomSort, handleEditPlayers, teamNames, titleCase }) => (   
+const Pitch = ({ 
+    team1, 
+    team2, 
+    allPlayers, 
+    randomSort, 
+    handleEditPlayers, 
+    teamNames, 
+    submitted, 
+    showPrevious, 
+    showAbout, 
+    handleReset 
+}) => ( 
+    !submitted || showPrevious || showAbout ? null : (
     <div className="container">
 
         <h3>Players on pitch:</h3>
         <ul style={{ display: "flex" }}>
             { allPlayers.map((current, index) => (
-                <li className="allPlayerList" key={ index }>{ titleCase(current.name) }</li>
+                <li className="allPlayerList" key={ index }>{ current.name }</li>
             ))}
         </ul>
 
@@ -22,7 +34,6 @@ const Pitch = ({ team1, team2, allPlayers, randomSort, handleEditPlayers, teamNa
                     teamNumber={ 1 }
                     team={ team1 }
                     teamName={ teamNames[0] }
-                    titleCase={ titleCase }
                 /> }
             </ul>
             <ul className="right" style={{ display: "inline-block", width: "50%" }}>{ 
@@ -30,17 +41,19 @@ const Pitch = ({ team1, team2, allPlayers, randomSort, handleEditPlayers, teamNa
                     teamNumber={ 2 }
                     team={ team2 }
                     teamName={ teamNames[1] }
-                    titleCase={ titleCase }
                 /> }
             </ul>
 
             <Button
                 onClick={ handleEditPlayers }> Edit Players
             </Button>
+            <Button
+                onClick={ handleReset }> Reset Teams
+            </Button>
 
         </section>
     </div>
-)
+))
     
     
 

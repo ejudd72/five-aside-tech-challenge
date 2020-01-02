@@ -59,5 +59,6 @@ let sortBySkill = (players) => {
 
     splitPlayers(bestPlayers, worstPlayers);
 
+    console.log("split fairly!");
     return { team1: team1, team2: team2 }
 }
