@@ -12,7 +12,7 @@ const Previous = ({ previousTeams, showPrevious }) => (
             <Table striped>
             <tbody>
                 <tr>
-                    <th>Game Number</th>
+                    <th>Teams:</th>
                     <th>Team 1</th>
                     <th>Team 2</th>
                 </tr>
@@ -20,20 +20,25 @@ const Previous = ({ previousTeams, showPrevious }) => (
                         <>
                         <tr key={ (index+1) * 500 }>
                             <td rowSpan="2">
-                                <h3>{ index + 1 }</h3>
+                                
+                                { current.shirtChoice ? 
+                                    <img alt="football jersey icon" style={{ padding: "5px", backgroundColor: current.shirtChoice[0].colour, width: "50px", border: "1px solid black", borderRadius: "50%"}} 
+                                src={ "./jerseys/pattern" + current.shirtChoice[0].pattern + ".svg"} /> : null } 
+                                vs. 
+                                { current.shirtChoice ? 
+                                <img 
+                                    alt="football jersey icon" 
+                                    style={{ padding: "5px", backgroundColor: current.shirtChoice[1].colour, width: "50px", border: "1px solid black", borderRadius: "50%"}} 
+                                    src={ "./jerseys/pattern" + current.shirtChoice[1].pattern + ".svg"} /> : null } 
+                                
                             </td>
-                            <td>
-                                { current.shirtChoice ? <img alt="football jersey icon" style={{ padding: "2px", backgroundColor: current.shirtChoice[0].colour, width: "20px", border: "1px solid black", borderRadius: "50%"}} 
-                                src={ "./jerseys/pattern" + current.shirtChoice[0].pattern + ".svg"} /> : null }
+                            <td style={{ backgroundColor: current.shirtChoice[0].colour }}>
+                               
                                 { current.team1Name } 
                                 
                             </td>
-                            <td>
-                                { current.team2Name }  
-                                { current.shirtChoice ? <img 
-                                alt="football jersey icon" 
-                                style={{ padding: "2px", backgroundColor: current.shirtChoice[1].colour, width: "20px", border: "1px solid black", borderRadius: "50%"}} 
-                                src={ "./jerseys/pattern" + current.shirtChoice[1].pattern + ".svg"} /> : null } 
+                            <td style={{ backgroundColor: current.shirtChoice[1].colour }}>
+                                { current.team2Name } 
                             </td>
                         </tr>
                         <tr key={ (index+1) * 600 }>
