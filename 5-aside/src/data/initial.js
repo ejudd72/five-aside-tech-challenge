@@ -10,7 +10,8 @@ const initial = {
     showPrevious: false,
     showAbout: false,
     warning: false, 
-    message: ""
+    message: "",
+    shirtChoice: {}
 }
 
 export default initial;

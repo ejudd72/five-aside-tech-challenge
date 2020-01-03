@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { FormControl, InputGroup, Button, Form } from "react-bootstrap";
-
 import { fairSort } from "../../functions/fairSort";
 import { randomSort } from "../../functions/randomSort";
+import ShirtPicker from '../ShirtPicker';
 
 class StartForm extends Component {
     constructor(props) {
@@ -20,6 +20,7 @@ class StartForm extends Component {
             submitted: false,
             randomSort: true,
             teamNames: ["Team 1", "Team 2"],
+            shirtChoice: [{colour: "red", pattern: 1}, {colour: "blue", pattern: 2}],
         }
 
         this.handleAddField = this.handleAddField.bind(this);
@@ -125,6 +126,20 @@ class StartForm extends Component {
         return { warning, message, canSubmit }
     }
 
+    handlePatternChoice(teamNo, number) {
+        let newShirtChoices = [...this.state.shirtChoice];
+        newShirtChoices[teamNo - 1].pattern = number;
+
+        this.setState({ shirtChoice: newShirtChoices})
+    }
+
+    handleColourChoice(colour, event, teamNo){
+        let newShirtChoices = [...this.state.shirtChoice];
+        newShirtChoices[teamNo - 1].colour = colour.hex;
+
+        this.setState({ shirtChoice: newShirtChoices})
+    }
+
     handleSubmit(type, e){
         e.preventDefault();
         let { players } = this.state;
@@ -161,11 +176,13 @@ class StartForm extends Component {
                 team1Name: tidyTeamNames[0], 
                 team2Name: tidyTeamNames[1],
                 team1: splitTeams.team1, 
-                team2: splitTeams.team2
+                team2: splitTeams.team2,
+                shirtChoice: this.state.shirtChoice
             },
             randomSort: type === "random" ? true : false,
             message: this.validate(truePlayers).message,
             warning: this.validate(truePlayers).warning,
+            shirtChoice: this.state.shirtChoice,
         }
         this.setState({ ...this.state, formResults });
         this.props.handleSave(formResults);
@@ -194,7 +211,7 @@ render(){
             <Form 
                 className="card" style={{ padding: 20, margin: 20 }}
             >
-            <InputGroup>
+            <div className="team-choices">
                 <label>Team 1 Name</label>
                 <FormControl
                     onChange={ (e) => this.handleAddTeamName(e, 1)}
@@ -202,7 +219,14 @@ render(){
                     type="text"
                     placeholder="Team 1"
                 />
-
+                <ShirtPicker
+                    teamName={ teamNames[0] }
+                    handlePatternChoice={ (teamNo, number) => this.handlePatternChoice(teamNo, number) }
+                    handleColourChoice={ (colour, event) => this.handleColourChoice(colour, event, 1) }
+                    teamNo={ 1 }
+                />
+            </div>
+            <div className="team-choices">
                 <label>Team 2 Name</label>
                 <FormControl
                     onChange={ (e) => this.handleAddTeamName(e, 2)}
@@ -210,8 +234,13 @@ render(){
                     type="text"
                     placeholder="Team 2"
                 />
-
-            </InputGroup>
+                <ShirtPicker
+                    teamName={ teamNames[1] }
+                    handlePatternChoice={ (teamNo, number) => this.handlePatternChoice(teamNo, number) }
+                    handleColourChoice={ (colour, event) => this.handleColourChoice(colour, event, 2) }
+                    teamNo={ 2 }
+                />
+            </div>
 
             {/* create player inputs for each objeoct in the players array currently  */}
             { submitted ? null : (

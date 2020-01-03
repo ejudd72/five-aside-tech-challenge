@@ -23,10 +23,17 @@ const Previous = ({ previousTeams, showPrevious }) => (
                                 <h3>{ index + 1 }</h3>
                             </td>
                             <td>
-                                { current.team1Name }
+                                { current.shirtChoice ? <img alt="football jersey icon" style={{ padding: "2px", backgroundColor: current.shirtChoice[0].colour, width: "20px", border: "1px solid black", borderRadius: "50%"}} 
+                                src={ "./jerseys/pattern" + current.shirtChoice[0].pattern + ".svg"} /> : null }
+                                { current.team1Name } 
+                                
                             </td>
                             <td>
-                                { current.team2Name }
+                                { current.team2Name }  
+                                { current.shirtChoice ? <img 
+                                alt="football jersey icon" 
+                                style={{ padding: "2px", backgroundColor: current.shirtChoice[1].colour, width: "20px", border: "1px solid black", borderRadius: "50%"}} 
+                                src={ "./jerseys/pattern" + current.shirtChoice[1].pattern + ".svg"} /> : null } 
                             </td>
                         </tr>
                         <tr key={ (index+1) * 600 }>

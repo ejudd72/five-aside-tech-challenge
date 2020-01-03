@@ -10,6 +10,7 @@ const mapStateToProps = ({
     submitted,
     showPrevious,
     showAbout,
+    shirtChoice
 }) => {
     return {
         team1, 
@@ -20,6 +21,7 @@ const mapStateToProps = ({
         submitted,
         showPrevious,
         showAbout,
+        shirtChoice
     };
   };
 
