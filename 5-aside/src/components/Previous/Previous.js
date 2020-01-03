@@ -3,43 +3,48 @@ import { Table } from "react-bootstrap";
 
 
 const Previous = ({ previousTeams, showPrevious }) => (  
-    // console.log(previousTeams),
-    // null
-// )
+   
     !showPrevious ? null : 
-    <div class="container"> 
+    <div className="container"> 
         { !previousTeams[0] ? "You haven't built any teams this session: please add some players and try again" : (
         <>
             <h2>Previous team splits</h2>
             <Table striped>
-                <thead>
+            <tbody>
+                <tr>
                     <th>Game Number</th>
                     <th>Team 1</th>
                     <th>Team 2</th>
-                </thead>
-                <tbody>
+                </tr>
                     { previousTeams.map((current, index) => (
                         <>
-                        <tr>
-                            <td rowspan="2">
+                        <tr key={ (index+1) * 500 }>
+                            <td rowSpan="2">
                                 <h3>{ index + 1 }</h3>
                             </td>
                             <td>
-                                { current.team1Name }
+                                { current.shirtChoice ? <img alt="football jersey icon" style={{ padding: "2px", backgroundColor: current.shirtChoice[0].colour, width: "20px", border: "1px solid black", borderRadius: "50%"}} 
+                                src={ "./jerseys/pattern" + current.shirtChoice[0].pattern + ".svg"} /> : null }
+                                { current.team1Name } 
+                                
                             </td>
                             <td>
-                                { current.team2Name }
+                                { current.team2Name }  
+                                { current.shirtChoice ? <img 
+                                alt="football jersey icon" 
+                                style={{ padding: "2px", backgroundColor: current.shirtChoice[1].colour, width: "20px", border: "1px solid black", borderRadius: "50%"}} 
+                                src={ "./jerseys/pattern" + current.shirtChoice[1].pattern + ".svg"} /> : null } 
                             </td>
                         </tr>
-                        <tr key={ index }>
+                        <tr key={ (index+1) * 600 }>
                             <td>
                                 { current.team1.map((current, index) => (
-                                    index === previousTeams.length - 1 ? current.name + ". " : current.name + ", "
+                                    <span key={ (index+1) * 300}> { index === previousTeams.length - 1 ? current.name + ". " : current.name + ", " }</span>
                                 ))}
                             </td>
                             <td>
                                 { current.team2.map((current, index) => (
-                                    index === previousTeams.length - 1 ? current.name + ". " : current.name + ", "
+                                    <span key={ (index+1) * 400 } >{ index === previousTeams.length - 1 ? current.name + ". " : current.name + ", " }</span>
                                 )) }
                             </td>
                         </tr>

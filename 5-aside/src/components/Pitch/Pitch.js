@@ -13,7 +13,8 @@ const Pitch = ({
     submitted, 
     showPrevious, 
     showAbout, 
-    handleReset 
+    handleReset,
+    shirtChoice
 }) => ( 
     !submitted || showPrevious || showAbout ? null : (
     <div className="container">
@@ -34,6 +35,7 @@ const Pitch = ({
                     teamNumber={ 1 }
                     team={ team1 }
                     teamName={ teamNames[0] }
+                    shirtChoice={ shirtChoice[0]}
                 /> }
             </ul>
             <ul className="right" style={{ display: "inline-block", width: "50%" }}>{ 
@@ -41,6 +43,7 @@ const Pitch = ({
                     teamNumber={ 2 }
                     team={ team2 }
                     teamName={ teamNames[1] }
+                    shirtChoice={ shirtChoice[1]}
                 /> }
             </ul>
 

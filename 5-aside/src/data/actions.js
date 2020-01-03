@@ -1,15 +1,4 @@
-// //function to generate a number of empty player objects with properties: default is 10
-    // generateEmptyPlayers(number) {
-    //     let players = [];
-
-    //     for (let i = 0; i < number; i += 1){
-    //        players.push({ name: "", skill: 5 });
-    //     }
-    //     return players;
-    // }
-
-
-export const editPlayers = ({ state }) => ({
+export const editPlayers = () => ({
     type: "editPlayers",
     submitted: false,
 })
@@ -41,7 +30,8 @@ export const submitPlayers = ({
     randomSort, 
     submitted, 
     warning, 
-    message
+    message,
+    shirtChoice
 }) => ({
     type: "submitPlayers", 
     team1, 
@@ -53,7 +43,8 @@ export const submitPlayers = ({
     randomSort, 
     submitted,
     warning,
-    message
+    message,
+    shirtChoice
 })
 
     // handleAddTeamName(e, teamNo){

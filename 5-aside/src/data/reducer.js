@@ -19,25 +19,30 @@ const reducer = (state, action) => {
       randomSort, 
       submitted,
       warning,
-      message 
-    }) => ({ 
-      ...state, 
-      team1, 
-      team2, 
-      players, 
-      perTeam, 
-      teamNames, 
-      previousTeams: [...state.previousTeams, { 
-        team1Name: previousTeams.team1Name, 
-        team2Name: previousTeams.team2Name, 
-        team1: previousTeams.team1, 
-        team2: previousTeams.team2 
-      } ], 
-      randomSort, 
-      submitted,
-      warning,
-      message
-  });
+      message,
+      shirtChoice
+    }) => {
+      return { 
+        ...state, 
+        team1, 
+        team2, 
+        players, 
+        perTeam, 
+        teamNames, 
+        previousTeams: [...state.previousTeams, { 
+          team1Name: previousTeams.team1Name, 
+          team2Name: previousTeams.team2Name, 
+          team1: previousTeams.team1, 
+          team2: previousTeams.team2, 
+          shirtChoice: previousTeams.shirtChoice,
+        } ], 
+        randomSort, 
+        submitted,
+        warning,
+        message,
+        shirtChoice
+    }
+  };
 
   const editPlayers = (state) =>  { 
     return  { 
