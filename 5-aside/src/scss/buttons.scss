@@ -50,12 +50,7 @@
 .shirt-select {
     width: 50px;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 50%;
     margin: 10px;
-}
-button .shirt-select:hover {
-    background-color: lightgrey;
-}
-button .shirt-select:focus {
-    background-color: green;
+    transition: width background-color 1s;
 }
