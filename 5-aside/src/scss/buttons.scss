@@ -45,3 +45,17 @@
         margin: 10px;
     }
 }
+
+
+.shirt-select {
+    width: 50px;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 10px;
+}
+button .shirt-select:hover {
+    background-color: lightgrey;
+}
+button .shirt-select:focus {
+    background-color: green;
+}

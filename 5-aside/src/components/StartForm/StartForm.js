@@ -224,6 +224,7 @@ render(){
                     handlePatternChoice={ (teamNo, number) => this.handlePatternChoice(teamNo, number) }
                     handleColourChoice={ (colour, event) => this.handleColourChoice(colour, event, 1) }
                     teamNo={ 1 }
+                    chosenPattern={ this.state.shirtChoice[0].pattern }
                 />
             </div>
             <div className="team-choices">
@@ -239,6 +240,7 @@ render(){
                     handlePatternChoice={ (teamNo, number) => this.handlePatternChoice(teamNo, number) }
                     handleColourChoice={ (colour, event) => this.handleColourChoice(colour, event, 2) }
                     teamNo={ 2 }
+                    chosenPattern={ this.state.shirtChoice[1].pattern }
                 />
             </div>
 
