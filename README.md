@@ -13,14 +13,9 @@ Technical challenge for developMe cohort 14's technical challenge: five-aside te
 Build a 5 a side team picker: 
 Accept names of 10 players, hit a button and it will randomise it into 2 teams of 5. 
 
-### Optional features: 
-- solution can support any number of people a side (begin with a form of 10 entries, ability to add/remove number of entries)
-- ability to balance teams - splitting strong/weak fairly. 
-- ability to view previous teams 
-
 ### To-do: 
-- Javascript functions created to sort an array of any number of player objects and sort randomly (23/12/2019)
-- Javascript functions created to sort an array of any number of player objects and sort into fair teams based on skill level (23/12/2019) 
+- Javascript functions created to sort an array of any number of player objects and sort randomly //
+- Javascript functions created to sort an array of any number of player objects and sort into fair teams based on skill level
 - Wireframe for UX // https://app.moqups.com/QFuGZSbiHg/view 
 - Set up react and redux //
 - Game-start component (form for inputting player names, team names and skill levels) //
