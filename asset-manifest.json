@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/five-aside-tech-challenge/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/five-aside-tech-challenge/static/js/main.12e5bb3c.chunk.js",
+    "main.js.map": "/five-aside-tech-challenge/static/js/main.12e5bb3c.chunk.js.map",
+    "runtime-main.js": "/five-aside-tech-challenge/static/js/runtime-main.945a02e5.js",
+    "runtime-main.js.map": "/five-aside-tech-challenge/static/js/runtime-main.945a02e5.js.map",
+    "static/js/2.b83b97d5.chunk.js": "/five-aside-tech-challenge/static/js/2.b83b97d5.chunk.js",
+    "static/js/2.b83b97d5.chunk.js.map": "/five-aside-tech-challenge/static/js/2.b83b97d5.chunk.js.map",
+    "index.html": "/five-aside-tech-challenge/index.html",
+    "precache-manifest.deae4f63d7b86853949f2e78a495558d.js": "/five-aside-tech-challenge/precache-manifest.deae4f63d7b86853949f2e78a495558d.js",
+    "service-worker.js": "/five-aside-tech-challenge/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/five-aside-tech-challenge/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.b83b97d5.chunk.js.LICENSE": "/five-aside-tech-challenge/static/js/2.b83b97d5.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.945a02e5.js",
+    "static/js/2.b83b97d5.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.12e5bb3c.chunk.js"
+  ]
+}
