@@ -3,6 +3,18 @@ div.input-group {
     margin: 10px;
 }
 
+div.input-group h3 {
+    width: 100%;
+    display: block;
+}
+
+// div.input-group h3,  div.input-group label, div.input-group input {
+//     @media(max-width: 500px){
+//         flex-wrap: wrap;
+//         width: 100%;
+//     }
+// }
+
 .card {
     padding: 20px;
     position: relative;

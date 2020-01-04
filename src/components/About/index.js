@@ -3,7 +3,7 @@ import About from "./About";
 
 const mapStateToProps = ({ showAbout }) => {
     return {
-      showAbout,
+        showAbout,
     };
 };
 
