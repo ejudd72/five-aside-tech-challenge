@@ -2,9 +2,9 @@
 Technical challenge for developMe cohort 14's technical challenge: five-aside team splitting app
 
 ## User: To get this project running, download the project and use the following commands:
--cd {filepath to where this repo is saved}/5-aside/5-aside
--npm install 
--npm start 
+- cd {filepath to where this repo is saved}/5-aside/5-aside
+- npm install 
+- npm start 
 
 - Alternately, you can visit the hosted page on github pages here: 
 
@@ -17,19 +17,15 @@ Accept names of 10 players, hit a button and it will randomise it into 2 teams o
 - ability to balance teams - splitting strong/weak fairly. 
 - ability to view previous teams 
 
-
-### Progress: 
+### To-do: 
 - Javascript functions created to sort an array of any number of player objects and sort randomly (23/12/2019)
 - Javascript functions created to sort an array of any number of player objects and sort into fair teams based on skill level (23/12/2019) 
-- Wireframes created https://app.moqups.com/QFuGZSbiHg/view (29/12/2019)
-
-### To-do: 
-- Wireframe for UX //
+- Wireframe for UX // https://app.moqups.com/QFuGZSbiHg/view 
 - Set up react and redux //
 - Game-start component (form for inputting player names, team names and skill levels) //
 - results component (to display players on each team) //
-- Extra component: a table displaying previous team splits
-- Extra component: ability to pick a team colour and team shirt pattern to create a team icon with
+- Extra component: a table displaying previous team splits //
+- Extra component: ability to pick a team colour and team shirt pattern to create a team icon with //
 
 ## Planning: 
 Wireframes created with 3 separate pages - the user input, app landing page where users enter their player names and potentially their skill levels too, the results page which will display the players split into teams, with decorative football themed background, and a 'previous games' table page which will display for the user previous teams they have played with (this is a stretch goal) 
