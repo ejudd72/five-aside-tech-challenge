@@ -29,13 +29,13 @@ const reducer = (state, action) => {
         players, 
         perTeam, 
         teamNames, 
-        previousTeams: [...state.previousTeams, { 
+        previousTeams: [{ 
           team1Name: previousTeams.team1Name, 
           team2Name: previousTeams.team2Name, 
           team1: previousTeams.team1, 
           team2: previousTeams.team2, 
           shirtChoice: previousTeams.shirtChoice,
-        } ], 
+        }, ...state.previousTeams], 
         randomSort, 
         submitted,
         warning,

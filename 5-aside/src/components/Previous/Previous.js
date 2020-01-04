@@ -22,13 +22,17 @@ const Previous = ({ previousTeams, showPrevious }) => (
                             <td rowSpan="2">
                                 
                                 { current.shirtChoice ? 
-                                    <img alt="football jersey icon" style={{ padding: "5px", backgroundColor: current.shirtChoice[0].colour, width: "50px", border: "1px solid black", borderRadius: "50%"}} 
+                                    <img 
+                                        className="team-shirt-table"
+                                        alt="football jersey icon" style={{ backgroundColor: current.shirtChoice[0].colour, }} 
                                 src={ "./jerseys/pattern" + current.shirtChoice[0].pattern + ".svg"} /> : null } 
                                 vs. 
                                 { current.shirtChoice ? 
                                 <img 
                                     alt="football jersey icon" 
-                                    style={{ padding: "5px", backgroundColor: current.shirtChoice[1].colour, width: "50px", border: "1px solid black", borderRadius: "50%"}} 
+                                    className="team-shirt-table"
+                                    style={{ 
+                                        backgroundColor: current.shirtChoice[1].colour, }} 
                                     src={ "./jerseys/pattern" + current.shirtChoice[1].pattern + ".svg"} /> : null } 
                                 
                             </td>

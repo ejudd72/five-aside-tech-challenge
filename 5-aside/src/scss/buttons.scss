@@ -1,56 +1,50 @@
-//global buttons - override bootstrap
+//global button styling
 button {
     border-color: transparent;
     padding: 10px;
     border-radius: 10px;
     background-color: $contrast;
+    filter: drop-shadow(5px 5px 5px darkgrey);
+}
 
-    button:hover { 
-        background-color: $darkShade;
-        border: solid transparent 2px;
-        color: white;
-    }
+button:hover { 
+    background-color: rgba(58, 73, 43, 0.762);
+    color: white;
+}
+
+// submit form buttons 
+.header-buttons {
+    background-color: lightgrey;
+    padding: 20px;
 }
 
 // Input form buttons
-.buttons-panel {
+.add-player-button {
+    background-color: green;
+}
+.remove-player-button {
+    background-color: red;
+}
+
+
+
+//pitch page
+.full-pitch .pitch button {
+    margin: 0 auto;
+    background-color: black; 
+}
+
+
+.header-buttons button  {
+    background-color: $darkColour;
+}
+
+.button-panel {
+    display: flex;
     margin: 0 auto;
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-}
-
-.add-player-button {
-    background-color: green;
-    left: 0px;
-}
-.remove-player-button {
-    background-color: red;
-    right: 0px;
-}
-
-.toggleButtonPanel {
-    display: flex;
-    position: absolute;
-    top: 30px;
-    right: 50px;
-    display: block;
-    
-    .togglePrevious {
-        // background-color: darkgrey;
-        border-color: transparent;
-        margin: 10px;
-    }
-
-}
-
-
-
-// submit form buttons 
-.button-panel {
-    display: flex;
-    justify-content: center;
-
     .button {
         margin: 10px;
     }

@@ -1,8 +1,6 @@
 import React from 'react';
 import Teams from "../Teams";
 
-import { Button } from "react-bootstrap";
-
 const Pitch = ({ 
     team1, 
     team2, 
@@ -44,16 +42,20 @@ const Pitch = ({
                 shirtChoice={ shirtChoice[1]}
             />
             </section>
-            <button
-                className="pitch button"
-                onClick={ handleEditPlayers }> Edit Players
-            </button>
-            <button
-                className="pitch button"
-                onClick={ handleReset }> Reset Teams
-            </button>
-    </div>
-))
+            <div className="button-panel">
+                <button
+                    className="pitch button"
+                    onClick={ handleEditPlayers }> Edit Players
+                </button>
+                <button
+                    className="pitch button"
+                    onClick={ handleReset }> Reset Teams
+                </button>
+            </div>
+            
+        </div>
+    )
+)
     
     
 

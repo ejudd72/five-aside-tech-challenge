@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormControl, InputGroup, Button, Form } from "react-bootstrap";
+import { FormControl, InputGroup, Form } from "react-bootstrap";
 import { fairSort } from "../../functions/fairSort";
 import { randomSort } from "../../functions/randomSort";
 import ShirtPicker from '../ShirtPicker';
@@ -12,7 +12,7 @@ class StartForm extends Component {
 
         this.state = {
             perTeam: perTeam,
-            // replace with this.generateEmptyPlayers(this.state.perTeam * 2)
+            // this function will create 10 empty player objects
             players: this.generateEmptyPlayers(10),
             previousTeams: [],
             team1: [],
@@ -51,10 +51,6 @@ class StartForm extends Component {
             perTeam: this.state.perTeam + 1, 
         });
     }
-
-    titleCase(string) {
-        return string.toLowerCase().replace(string.charAt(0), string.charAt(0).toUpperCase());
-    } 
 
     handleRemoveField(e){
         e.preventDefault();
@@ -109,14 +105,16 @@ class StartForm extends Component {
     }
 
     validate(players) {
+        // this functions takes all players and tests 1. whether there is at least two, whether
         let message = "";
         let warning = false;
         let canSubmit = false;
-        if ( players.length < 1 ){
-            message = "You haven't added any players yet: please add some players and try again";
+
+        if ( players.length < 2 ){
+            message = "Please add at least 2 players and try again";
             warning = true;
             canSubmit = false;
-        } else if( players.length % 2 === 1 ){
+        } else if ( players.length % 2 === 1 ){
             message = "You have entered an odd number of players. One team will have one extra player. This will result in an unbalanced team. Is this ok?"
             warning = true;
             canSubmit = false;
@@ -125,10 +123,13 @@ class StartForm extends Component {
             canSubmit = true;
         };
 
+        
         return { warning, message, canSubmit }
     }
 
+    // two functions used in the 'shirt picker' component
     handlePatternChoice(teamNo, number) {
+        // copy current shirt choices from state, update the pattern number of the specific one for the given team and re-set the object to state
         let newShirtChoices = [...this.state.shirtChoice];
         newShirtChoices[teamNo - 1].pattern = number;
 
@@ -136,18 +137,25 @@ class StartForm extends Component {
     }
 
     handleColourChoice(colour, event, teamNo){
+        // copy current shirt choices from state, update the colour choice of the specific one for the given team and re-set the object to state
         let newShirtChoices = [...this.state.shirtChoice];
         newShirtChoices[teamNo - 1].colour = colour.hex;
 
         this.setState({ shirtChoice: newShirtChoices})
     }
 
+    // putting user input into titlecase for consistency
+    titleCase(string) {
+        return string.toLowerCase().replace(string.charAt(0), string.charAt(0).toUpperCase());
+    } 
+
+    //this function will validate user submitted information in state and pass it to the reducer
     handleSubmit(type, e){
         e.preventDefault();
         let { players } = this.state;
-    
-        // filters all players have been assigned names? this is so that any blank fields submitted by the user aren't put into global state. Then input is put into title case for the global state. 
 
+        
+        // filters all players have been assigned names? this is so that any blank fields submitted by the user aren't put into global state. Then input is put into title case for the global state. 
         let truePlayers = players.filter(current => {
             return current.name !== "";
         }).map(current => { 
@@ -163,11 +171,11 @@ class StartForm extends Component {
             splitTeams = fairSort(truePlayers);
         }
 
+        // store the team names in title case in state
         let tidyTeamNames = this.state.teamNames.map(current => this.titleCase(current))
-
         
         let formResults = {
-            teamNames: tidyTeamNames,
+            teamNames: tidyTeamNames, 
             players: truePlayers,
             perTeam: Math.round(truePlayers.length / 2),
             //if no players have been added or an odd number of players has been added, user needs to accept a warning before form will be submitted
@@ -186,11 +194,14 @@ class StartForm extends Component {
             warning: this.validate(truePlayers).warning,
             shirtChoice: this.state.shirtChoice,
         }
+
+        // still set local state here so that we can revert to the form as it is when we go back to edit players screen
         this.setState({ ...this.state, formResults });
+
+        // actions/reducer function to save global state
         this.props.handleSave(formResults);
     }
 
-    
 render(){
     let { players, teamNames } = this.state;
     let { showAbout, showPrevious, submitted } = this.props;
@@ -198,58 +209,57 @@ render(){
     return submitted || showPrevious || showAbout ? null : ( 
         <div className="container">
         
-            <h2>Team Details</h2>
             <Form 
-                className="card" style={{ padding: 20, margin: 20 }}
+                className="card" 
+                style={{ padding: 20, margin: 20 }}
             >
-            
-            <div className="team-choices team-choices-1">
-                <h3><label>Choose Team 1's Name</label></h3>
-                <FormControl
-                    onChange={ (e) => this.handleAddTeamName(e, 1)}
-                    value={ teamNames[0] }
-                    type="text"
-                    placeholder="Team 1"
-                />
-                <ShirtPicker
-                    teamName={ teamNames[0] }
-                    handlePatternChoice={ (teamNo, number) => this.handlePatternChoice(teamNo, number) }
-                    handleColourChoice={ (colour, event) => this.handleColourChoice(colour, event, 1) }
-                    teamNo={ 1 }
-                    chosenShirt={ this.state.shirtChoice[0] }
-                />
-            </div>
-            <div className="team-choices team-choices-2">
-                <h3><label>Choose Team 2's Name</label></h3>
-                <FormControl
-                    onChange={ (e) => this.handleAddTeamName(e, 2)}
-                    value={ teamNames[1] }
-                    type="text"
-                    placeholder="Team 2"
-                />
-                <ShirtPicker
-                    teamName={ teamNames[1] }
-                    handlePatternChoice={ (teamNo, number) => this.handlePatternChoice(teamNo, number) }
-                    handleColourChoice={ (colour, event) => this.handleColourChoice(colour, event, 2) }
-                    teamNo={ 2 }
-                    chosenShirt={ this.state.shirtChoice[1] }
-                />
-            </div>
-            <div className="container player-details">
-            <h2>Player Details</h2> 
-            <div className="buttons-panel">
-                <Button  
-                    type="number"
-                    onClick={ (e) => this.handleAddField(e) }
-                    className="add-player-button fields-button no-border"
-                >Add more Players </Button>  
-                
-                <Button  
-                    type="number"
-                    onClick={ (e) => this.handleRemoveField(e) }
-                    className="remove-player-button fields-button no-border"
-                >Use fewer Players </Button> 
-            </div>
+
+                <h2>Team Details</h2>
+                <div className="team-choices team-choices-1">
+                    <h3><label>Choose Team 1's Name</label></h3>
+                    <FormControl
+                        onChange={ (e) => this.handleAddTeamName(e, 1)}
+                        value={ teamNames[0] }
+                        type="text"
+                        placeholder="Team 1"
+                    />
+                    <ShirtPicker
+                        teamName={ teamNames[0] }
+                        handlePatternChoice={ (teamNo, number) => this.handlePatternChoice(teamNo, number) }
+                        handleColourChoice={ (colour, event) => this.handleColourChoice(colour, event, 1) }
+                        teamNo={ 1 }
+                        chosenShirt={ this.state.shirtChoice[0] }
+                    />
+                </div>
+                <div className="team-choices team-choices-2">
+                    <h3><label>Choose Team 2's Name</label></h3>
+                    <FormControl
+                        onChange={ (e) => this.handleAddTeamName(e, 2)}
+                        value={ teamNames[1] }
+                        type="text"
+                        placeholder="Team 2"
+                    />
+                    <ShirtPicker
+                        teamName={ teamNames[1] }
+                        handlePatternChoice={ (teamNo, number) => this.handlePatternChoice(teamNo, number) }
+                        handleColourChoice={ (colour, event) => this.handleColourChoice(colour, event, 2) }
+                        teamNo={ 2 }
+                        chosenShirt={ this.state.shirtChoice[1] }
+                    />
+                </div>
+                <div className="container player-details">
+                    <h2>Player Details</h2> 
+                    <div className="button-panel">
+                        <button  
+                            onClick={ (e) => this.handleAddField(e) }
+                            className="add-player-button fields-button no-border"
+                        >Add more Players </button>  
+                        
+                        <button  
+                            onClick={ (e) => this.handleRemoveField(e) }
+                            className="remove-player-button"
+                        >Use fewer Players </button> 
+                    </div>
 
             {/* create player inputs for each empty object in the players array currently  */}
  
@@ -283,20 +293,20 @@ render(){
                 ))
         ) }
             <div className="button-panel">
-                <Button 
+                <button 
                     className="button no-border"
                     onClick={ (e) => this.handleSubmit("random", e) }
                     
-                    > Sort players Randomly</Button>
-                <Button 
+                    > Sort players Randomly</button>
+                <button 
                     className="button no-border"
                     onClick={ (e) => this.handleSubmit("fair", e) }
-                > Sort into 2 fair teams  </Button>
-                <Button 
+                > Sort into 2 fair teams  </button>
+                <button 
                     className="button no-border"
                     variant="danger"
                     onClick={ () => this.handleReset() }
-                > Reset form  </Button>
+                > Reset form  </button>
             </div>
         </div>
     </Form>
