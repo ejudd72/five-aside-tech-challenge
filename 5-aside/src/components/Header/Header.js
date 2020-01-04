@@ -1,5 +1,5 @@
 import React from "react";
-import { Jumbotron, Button } from "react-bootstrap";
+import { Jumbotron } from "react-bootstrap";
 
 const Header = ({ handleShowPrevious, showPrevious, showAbout, handleShowAbout }) => (
    <>
@@ -9,8 +9,8 @@ const Header = ({ handleShowPrevious, showPrevious, showAbout, handleShowAbout }
 
         </Jumbotron>
     <div className="toggleButtonPanel">
-        <Button className="togglePrevious" onClick={ handleShowPrevious }>{ showPrevious ? "Close Previous Teams" : "Show Previous Teams" } </Button>
-        <Button className="togglePrevious" onClick={ handleShowAbout }>{ showAbout ? "Close About" : "Show About" } </Button>
+        <button className="togglePrevious no-border" onClick={ handleShowPrevious }>{ showPrevious ? "Close Previous Teams" : "Show Previous Teams" } </button>
+        <button className="togglePrevious no-border" onClick={ handleShowAbout }>{ showAbout ? "Close About" : "Show About" } </button>
     </div>
     </>
 );

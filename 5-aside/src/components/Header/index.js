@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
 import Header from "./Header";
 
-const mapStateToProps = ({ showPrevious }) => {
+const mapStateToProps = ({ showPrevious, showAbout }) => {
     return {
         showPrevious,
+        showAbout
     };
   };
 

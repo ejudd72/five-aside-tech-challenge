@@ -3,7 +3,6 @@
     height: 100vh;
     position: fixed;
     top: 20vh;
-    
     z-index: 100;
 
     .form-submit-alert {
@@ -12,4 +11,105 @@
         position: relative;
         left: 33%;
     }
+}
+
+// starting form layout - team choices section
+.team-choices {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, .3);
+    color: white;
+    @media(min-width: 800px) {
+        width: 45%;
+    }
+}
+.team-choices-2 {
+    @media(min-width: 800px) {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+}
+
+.card {
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+}
+
+//pitch 
+.all-player-list { 
+    display: flex;
+    justify-content: space-evenly;
+    width: 70%;
+    margin: 0 auto 20px auto;
+    padding: 10px;
+}
+
+.full-pitch {
+    background-image: url('./assets/pitch-background.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.pitch-side { 
+    width: 90%;
+    margin: 30px;
+    background-color: rgba(255, 255, 255, .6);
+    border-radius: 20px;
+    color: black;
+    text-align: center;
+}
+.player-name {
+    font-weight: bold;
+    font-size: 2rem;
+    display: block;
+}
+
+@keyframes move-in-left { 
+    0% {
+        transform: translate(200px, -200px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes move-in-right { 
+    0% {
+        transform: translate(-200px, -200px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.player-individual {
+    display:  block;
+    padding: 10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.pitch-side-1 .player-individual {
+    animation: move-in-left 1s ease-in;
+}
+
+.pitch-side-2 .player-individual {
+    animation: move-in-right 2s ease-in;
+}
+
+.pitch .button {
+    margin: 30px;
+    background-color: black; 
+}
+
+td img {
+    margin: 10px;
 }

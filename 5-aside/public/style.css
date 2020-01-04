@@ -1,0 +1,225 @@
+@import url("https://fonts.googleapis.com/css?family=Graduate|Montserrat:700|Source+Sans+Pro&display=swap");
+.header {
+  background-color: #73ab84;
+  color: #000501;
+  text-align: center;
+  font-size: 500px;
+  margin: 30px;
+}
+
+.alert-contain {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 20vh;
+  z-index: 100;
+}
+.alert-contain .form-submit-alert {
+  width: 33%;
+  max-width: 400px;
+  position: relative;
+  left: 33%;
+}
+
+.team-choices {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+}
+@media (min-width: 800px) {
+  .team-choices {
+    width: 45%;
+  }
+}
+
+@media (min-width: 800px) {
+  .team-choices-2 {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
+
+.card {
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+}
+
+.all-player-list {
+  display: flex;
+  justify-content: space-evenly;
+  width: 70%;
+  margin: 0 auto 20px auto;
+  padding: 10px;
+}
+
+.full-pitch {
+  background-image: url("./assets/pitch-background.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.pitch-side {
+  width: 90%;
+  margin: 30px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  color: black;
+  text-align: center;
+}
+
+.player-name {
+  font-weight: bold;
+  font-size: 2rem;
+  display: block;
+}
+
+@keyframes move-in-left {
+  0% {
+    transform: translate(200px, -200px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes move-in-right {
+  0% {
+    transform: translate(-200px, -200px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.player-individual {
+  display: block;
+  padding: 10px;
+  background-color: white;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.pitch-side-1 .player-individual {
+  animation: move-in-left 1s ease-in;
+}
+
+.pitch-side-2 .player-individual {
+  animation: move-in-right 2s ease-in;
+}
+
+.pitch .button {
+  margin: 30px;
+  background-color: black;
+}
+
+td {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+button {
+  border-color: transparent;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #79c7c5;
+}
+button button:hover {
+  background-color: #000501;
+  border: solid transparent 2px;
+  color: white;
+}
+
+.buttons-panel {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.add-player-button {
+  background-color: green;
+  left: 0px;
+}
+
+.remove-player-button {
+  background-color: red;
+  right: 0px;
+}
+
+.toggleButtonPanel {
+  display: flex;
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  display: block;
+}
+.toggleButtonPanel .togglePrevious {
+  border-color: transparent;
+  margin: 10px;
+}
+
+.button-panel {
+  display: flex;
+  justify-content: center;
+}
+.button-panel .button {
+  margin: 10px;
+}
+
+.shirt-select {
+  width: 50px;
+  padding: 5px;
+  border-radius: 50%;
+  margin: 10px;
+  transition: width background-color 1s;
+}
+
+div.input-group {
+  padding: 20px;
+  margin: 10px;
+}
+
+.team-shirt {
+  margin: 0 auto;
+}
+
+h1 {
+  font-family: "Graduate", cursive;
+  font-weight: bold;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+th {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  color: #000501;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  color: #73ab84;
+}
+
+label {
+  padding: 10px;
+  display: block;
+}
+
+ul {
+  list-style: none;
+  margin-left: 20px;
+}
+
+/*# sourceMappingURL=style.css.map */

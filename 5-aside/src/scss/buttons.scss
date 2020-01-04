@@ -1,13 +1,23 @@
-// Input form buttons
-.fields-button {
-    position: absolute;
-    top: 40vw;
-    max-width: 10%;
-    z-index: 20;
-    border-color: grey;
-    .fields-button:hover {
-        background-color: black;
+//global buttons - override bootstrap
+button {
+    border-color: transparent;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: $contrast;
+
+    button:hover { 
+        background-color: $darkShade;
+        border: solid transparent 2px;
+        color: white;
     }
+}
+
+// Input form buttons
+.buttons-panel {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
 }
 
 .add-player-button {
@@ -27,14 +37,14 @@
     display: block;
     
     .togglePrevious {
-        background-color: darkgrey;
+        // background-color: darkgrey;
+        border-color: transparent;
         margin: 10px;
     }
 
-    .togglePrevious:hover {
-        background-color: black;
-    }
 }
+
+
 
 // submit form buttons 
 .button-panel {
@@ -45,7 +55,6 @@
         margin: 10px;
     }
 }
-
 
 .shirt-select {
     width: 50px;

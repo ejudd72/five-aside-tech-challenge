@@ -43,7 +43,8 @@ class StartForm extends Component {
         return players;
     }
 
-    handleAddField(){
+    handleAddField(e){
+        e.preventDefault();
         let { players  } = this.state;
         this.setState({ 
             players: players.length < 40 ? [...players, { name: "", skill: 5 }, { name: "", skill: 5 }] : [...players],
@@ -55,7 +56,8 @@ class StartForm extends Component {
         return string.toLowerCase().replace(string.charAt(0), string.charAt(0).toUpperCase());
     } 
 
-    handleRemoveField(){
+    handleRemoveField(e){
+        e.preventDefault();
         let { players } = this.state;
         this.setState({ 
             //remove two (one per team) final empty player objects from array
@@ -196,22 +198,13 @@ render(){
     return submitted || showPrevious || showAbout ? null : ( 
         <div className="container">
         
-            <Button  
-                type="number"
-                onClick={ this.handleAddField }
-                className="add-player-button fields-button"
-            >Add more Players </Button>  
-
-            <Button  
-                type="number"
-                onClick={ this.handleRemoveField }
-                className="remove-player-button fields-button"
-            >Use fewer Players </Button>  
-
+            
+            <h2>Team Details</h2>
             <Form 
                 className="card" style={{ padding: 20, margin: 20 }}
             >
-            <div className="team-choices">
+            
+            <div className="team-choices team-choices-1">
                 <label>Team 1 Name</label>
                 <FormControl
                     onChange={ (e) => this.handleAddTeamName(e, 1)}
@@ -227,7 +220,7 @@ render(){
                     chosenShirt={ this.state.shirtChoice[0] }
                 />
             </div>
-            <div className="team-choices">
+            <div className="team-choices team-choices-2">
                 <label>Team 2 Name</label>
                 <FormControl
                     onChange={ (e) => this.handleAddTeamName(e, 2)}
@@ -244,13 +237,30 @@ render(){
                 />
             </div>
 
-            {/* create player inputs for each objeoct in the players array currently  */}
+            <h2>Player Details</h2> 
+            <div className="buttons-panel">
+                <Button  
+                    type="number"
+                    onClick={ (e) => this.handleAddField(e) }
+                    className="add-player-button fields-button no-border"
+                >Add more Players </Button>  
+                
+                <Button  
+                    type="number"
+                    onClick={ (e) => this.handleRemoveField(e) }
+                    className="remove-player-button fields-button no-border"
+                >Use fewer Players </Button> 
+            </div>
+
+            {/* create player inputs for each empty object in the players array currently  */}
+ 
             { submitted ? null : (
                 players.map((_, index) => (
                 <>
-                    <h5> Player {index + 1} </h5>
-
+                    
+                    
                     <InputGroup key={ index }>
+                    <h5> Player {index + 1} </h5>
                     <label>Name</label>
                     <FormControl
                         onChange={ (e) => this.handleAddPlayer(e, index)}
@@ -267,6 +277,7 @@ render(){
                         min="0" 
                         max="10"
                     /> 
+                    
                     </InputGroup>
                     <hr/>
                 </>
@@ -274,15 +285,16 @@ render(){
         ) }
         <div className="button-panel">
             <Button 
-                className="button"
+                className="button no-border"
                 onClick={ (e) => this.handleSubmit("random", e) }
+                
                 > Sort players Randomly</Button>
             <Button 
-                className="button"
+                className="button no-border"
                 onClick={ (e) => this.handleSubmit("fair", e) }
             > Sort into 2 fair teams  </Button>
             <Button 
-                className="button"
+                className="button no-border"
                 variant="danger"
                 onClick={ () => this.handleReset() }
             > Reset form  </Button>
