@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/five-aside-tech-challenge/precache-manifest.deae4f63d7b86853949f2e78a495558d.js"
+  "/five-aside-tech-challenge/precache-manifest.1be5a2826d874e7600c6005d9a7df9bd.js"
 );
 
 self.addEventListener('message', (event) => {

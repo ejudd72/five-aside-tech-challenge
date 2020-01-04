@@ -169,6 +169,14 @@ div.input-group {
   margin: 10px;
 }
 
+@media (max-width: 500px) {
+  div.input-group h3, div.input-group label, div.input-group input {
+    width: 100%;
+    display: block;
+    flex-wrap: wrap;
+  }
+}
+
 .card {
   padding: 20px;
   position: relative;
