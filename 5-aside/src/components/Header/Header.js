@@ -4,14 +4,14 @@ import { Jumbotron } from "react-bootstrap";
 const Header = ({ handleShowPrevious, showPrevious, showAbout, handleShowAbout }) => (
    <>
    <div className="button-panel header-buttons">
-        <button 
-            onClick={ handleShowPrevious }
-        >
+       
+        <button onClick={ handleShowPrevious }>
             { showPrevious ? "Close Previous Teams" : "Show Previous Teams" } 
         </button>
-        <button 
-            onClick={ handleShowAbout }>
-                { showAbout ? "Close About" : "Show About" }</button>
+
+        <button onClick={ handleShowAbout }>
+                { showAbout ? "Close About" : "Show About" }
+        </button>
     </div>
 
     <Jumbotron className="header mt-4 mb-0">
