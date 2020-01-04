@@ -300,25 +300,24 @@ class StartForm extends Component {
                     ? null
                     : players.map((_, index) => (
                         <>
-                            <h5> Player {index + 1} </h5>
                             <InputGroup key={index}>
-                            <label>Name</label>
-                            <FormControl
-                                onChange={e => this.handleAddPlayer(e, index)}
-                                value={players[index].name}
-                                key={index}
-                                type="text"
-                            />
-                            </InputGroup>
-                            <InputGroup key={index}>
-                            <label>Skill</label>
-                            <FormControl
-                                onChange={e => this.handleAddSkill(e, index)}
-                                value={players[index].skill}
-                                type="range"
-                                min="0"
-                                max="10"
-                            />
+                                <h5> Player {index + 1} </h5>
+                                <label>Name</label>
+                                <FormControl
+                                    onChange={e => this.handleAddPlayer(e, index)}
+                                    value={players[index].name}
+                                    key={index}
+                                    type="text"
+                                />
+                                
+                                <label>Skill</label>
+                                <FormControl
+                                    onChange={e => this.handleAddSkill(e, index)}
+                                    value={players[index].skill}
+                                    type="range"
+                                    min="0"
+                                    max="10"
+                                />
                             </InputGroup>
 
                             <hr />
