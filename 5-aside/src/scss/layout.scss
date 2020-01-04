@@ -3,7 +3,6 @@
     height: 100vh;
     position: fixed;
     top: 20vh;
-    
     z-index: 100;
 
     .form-submit-alert {
@@ -13,3 +12,41 @@
         left: 33%;
     }
 }
+
+// starting form layout - team choices section
+.team-choices {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, .3);
+    color: white;
+    margin-top: 20px;
+
+    h3 {
+        width: 100%;
+    }
+    @media(min-width: 800px) {
+        width: 45%;
+    }
+}
+
+.team-choices-2 {
+    @media(min-width: 800px) {
+        position: absolute;
+        top: 80px;
+        right: 20px;
+    }
+}
+
+//about page container
+.about {
+    background-color: rgba(0, 0, 0, .3);
+    border-radius: 20px;
+    margin: 30px auto;
+    width: 70%;
+    padding: 20px;
+    filter: drop-shadow(5px 5px 5px darkgrey);
+    color: black;
+} 

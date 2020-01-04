@@ -3,8 +3,8 @@ import About from "./About";
 
 const mapStateToProps = ({ showAbout }) => {
     return {
-        showAbout,
+      showAbout,
     };
-  };
+};
 
 export default connect(mapStateToProps)(About);
