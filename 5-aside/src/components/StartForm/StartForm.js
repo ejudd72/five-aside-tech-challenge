@@ -113,11 +113,11 @@ class StartForm extends Component {
         let warning = false;
         let canSubmit = false;
         if ( players.length < 1 ){
-            message = "You haven't yet added any players: please add some players and try again";
+            message = "You haven't added any players yet: please add some players and try again";
             warning = true;
             canSubmit = false;
         } else if( players.length % 2 === 1 ){
-            message = "You have entered an odd number of players. One team will have one extra player. Is this ok?"
+            message = "You have entered an odd number of players. One team will have one extra player. This will result in an unbalanced team. Is this ok?"
             warning = true;
             canSubmit = false;
         } else {
@@ -198,14 +198,13 @@ render(){
     return submitted || showPrevious || showAbout ? null : ( 
         <div className="container">
         
-            
             <h2>Team Details</h2>
             <Form 
                 className="card" style={{ padding: 20, margin: 20 }}
             >
             
             <div className="team-choices team-choices-1">
-                <label>Team 1 Name</label>
+                <h3><label>Choose Team 1's Name</label></h3>
                 <FormControl
                     onChange={ (e) => this.handleAddTeamName(e, 1)}
                     value={ teamNames[0] }
@@ -221,7 +220,7 @@ render(){
                 />
             </div>
             <div className="team-choices team-choices-2">
-                <label>Team 2 Name</label>
+                <h3><label>Choose Team 2's Name</label></h3>
                 <FormControl
                     onChange={ (e) => this.handleAddTeamName(e, 2)}
                     value={ teamNames[1] }
@@ -236,7 +235,7 @@ render(){
                     chosenShirt={ this.state.shirtChoice[1] }
                 />
             </div>
-
+            <div className="container player-details">
             <h2>Player Details</h2> 
             <div className="buttons-panel">
                 <Button  
@@ -283,21 +282,22 @@ render(){
                 </>
                 ))
         ) }
-        <div className="button-panel">
-            <Button 
-                className="button no-border"
-                onClick={ (e) => this.handleSubmit("random", e) }
-                
-                > Sort players Randomly</Button>
-            <Button 
-                className="button no-border"
-                onClick={ (e) => this.handleSubmit("fair", e) }
-            > Sort into 2 fair teams  </Button>
-            <Button 
-                className="button no-border"
-                variant="danger"
-                onClick={ () => this.handleReset() }
-            > Reset form  </Button>
+            <div className="button-panel">
+                <Button 
+                    className="button no-border"
+                    onClick={ (e) => this.handleSubmit("random", e) }
+                    
+                    > Sort players Randomly</Button>
+                <Button 
+                    className="button no-border"
+                    onClick={ (e) => this.handleSubmit("fair", e) }
+                > Sort into 2 fair teams  </Button>
+                <Button 
+                    className="button no-border"
+                    variant="danger"
+                    onClick={ () => this.handleReset() }
+                > Reset form  </Button>
+            </div>
         </div>
     </Form>
     </div>

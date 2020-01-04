@@ -29,6 +29,7 @@
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.3);
   color: white;
+  margin-top: 20px;
 }
 @media (min-width: 800px) {
   .team-choices {
@@ -59,44 +60,31 @@
 }
 
 .full-pitch {
-  background-image: url("./assets/pitch-background.jpg");
+  background-image: url("./assets/pitch-background-vertical.jpg");
   background-attachment: fixed;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  padding: 20px 0;
+}
+@media (min-width: 800px) {
+  .full-pitch {
+    background-image: url("./assets/pitch-background.jpg");
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .pitch-side {
+  position: relative;
   width: 90%;
-  margin: 30px;
+  margin: 50px 30px;
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 20px;
   color: black;
   text-align: center;
 }
 
-.player-name {
-  font-weight: bold;
-  font-size: 2rem;
-  display: block;
-}
-
-@keyframes move-in-left {
-  0% {
-    transform: translate(200px, -200px);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
-}
-@keyframes move-in-right {
-  0% {
-    transform: translate(-200px, -200px);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
-}
 .player-individual {
   display: block;
   padding: 10px;
@@ -105,22 +93,13 @@
   border-radius: 10px;
 }
 
-.pitch-side-1 .player-individual {
-  animation: move-in-left 1s ease-in;
-}
-
-.pitch-side-2 .player-individual {
-  animation: move-in-right 2s ease-in;
-}
-
 .pitch .button {
   margin: 30px;
   background-color: black;
 }
 
-td {
-  display: flex;
-  justify-content: space-evenly;
+td img {
+  margin: 10px;
 }
 
 button {
@@ -220,6 +199,12 @@ label {
 ul {
   list-style: none;
   margin-left: 20px;
+}
+
+.player-name {
+  font-weight: bold;
+  font-size: 2rem;
+  display: block;
 }
 
 /*# sourceMappingURL=style.css.map */

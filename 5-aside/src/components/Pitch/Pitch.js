@@ -29,7 +29,6 @@ const Pitch = ({
         <h3>Sorted: { randomSort === true ? "Randomly" : "Based on skill level"}</h3>
         <section 
             className="full-pitch"
-            style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}
         > 
             <Teams
                 teamNumber={ 1 }
