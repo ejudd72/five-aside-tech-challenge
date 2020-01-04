@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css?family=Graduate|Montserrat:700|Source+Sans+Pro&display=swap");
+button {
+  border-color: transparent;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #73ab84;
+  filter: drop-shadow(5px 5px 5px darkgrey);
+}
+
+button:hover {
+  background-color: rgba(58, 73, 43, 0.762);
+  color: white;
+}
+
+.header-buttons {
+  background-color: lightgrey;
+  padding: 20px;
+}
+
+.add-player-button {
+  background-color: green;
+}
+
+.remove-player-button {
+  background-color: red;
+}
+
+.full-pitch .pitch button {
+  margin: 0 auto;
+  background-color: black;
+}
+
+.header-buttons button {
+  background-color: #73ab84;
+}
+
+.button-panel {
+  display: flex;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.button-panel .button {
+  margin: 10px;
+}
+
+.shirt-select {
+  width: 50px;
+  padding: 5px;
+  border-radius: 50%;
+  margin: 10px;
+  transition: width background-color 1s;
+}
+
+.header {
+  background-color: #73ab84;
+  color: #000501;
+  text-align: center;
+  font-size: 500px;
+  margin: 0 30px;
+}
+
+.all-player-list {
+  display: flex;
+  justify-content: space-evenly;
+  width: 70%;
+  margin: 0 auto 20px auto;
+  padding: 10px;
+}
+
+.full-pitch {
+  background-image: url("./assets/pitch-background-vertical.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  padding: 20px 0;
+}
+@media (min-width: 800px) {
+  .full-pitch {
+    background-image: url("./assets/pitch-background.jpg");
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.pitch-side {
+  position: relative;
+  width: 90%;
+  margin: 50px 30px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  color: black;
+  text-align: center;
+}
+
+.player-individual {
+  display: block;
+  padding: 10px;
+  background-color: white;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.total-skill {
+  margin: 20px auto;
+  padding: 10px;
+  background-color: lightgrey;
+}
+
+td img {
+  margin: 10px;
+}
+
+.alert-contain {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 20vh;
+  z-index: 100;
+}
+.alert-contain .form-submit-alert {
+  width: 33%;
+  max-width: 400px;
+  position: relative;
+  left: 33%;
+}
+
+.team-choices {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  margin-top: 20px;
+}
+.team-choices h3 {
+  width: 100%;
+}
+@media (min-width: 800px) {
+  .team-choices {
+    width: 45%;
+  }
+}
+
+@media (min-width: 800px) {
+  .team-choices-2 {
+    position: absolute;
+    top: 80px;
+    right: 20px;
+  }
+}
+
+.about {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  margin: 30px auto;
+  width: 70%;
+  padding: 20px;
+  filter: drop-shadow(5px 5px 5px darkgrey);
+  color: black;
+}
+
+div.input-group {
+  padding: 20px 0;
+  margin: 10px;
+}
+
+.card {
+  padding: 20px;
+  position: relative;
+  background-color: lightgrey;
+}
+
+.team-shirt {
+  margin: 0 auto;
+  border: 10px solid black;
+  filter: drop-shadow(5px 5px 5px black);
+  padding: 10px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.shirt-select {
+  width: 50px;
+  padding: 5px;
+  border-radius: 50%;
+  margin: 10px;
+}
+
+.team-shirt-table {
+  width: 50px;
+  padding: 2%;
+  border: 1px solid black;
+  border-radius: 50%;
+  filter: drop-shadow(5px 5px 5px black);
+}
+
+h1 {
+  font-family: "Graduate", cursive;
+  font-weight: bold;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+th {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  color: #000501;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  color: #73ab84;
+}
+
+label {
+  padding: 10px;
+  display: block;
+}
+
+ul {
+  list-style: none;
+  margin-left: 20px;
+}
+
+.player-name {
+  font-weight: bold;
+  font-size: 2rem;
+  display: block;
+}
+
+/*# sourceMappingURL=style.css.map */

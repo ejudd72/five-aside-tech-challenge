@@ -1,0 +1,54 @@
+
+
+// pitch/team split results display 
+.all-player-list { 
+    display: flex;
+    justify-content: space-evenly;
+    width: 70%;
+    margin: 0 auto 20px auto;
+    padding: 10px;
+}
+
+.full-pitch {
+    background-image: url('./assets/pitch-background-vertical.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 20px 0;
+
+    @media(min-width: 800px){
+        background-image: url('./assets/pitch-background.jpg');
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        
+    }
+}
+
+.pitch-side { 
+    position: relative;
+    width: 90%;
+    margin: 50px 30px;
+    background-color: rgba(255, 255, 255, .6);
+    border-radius: 20px;
+    color: black;
+    text-align: center;
+}
+
+.player-individual {
+    display:  block;
+    padding: 10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+
+.total-skill { 
+    margin: 20px auto;
+    padding: 10px;
+    background-color: lightgrey;
+}
+td img {
+    margin: 10px;
+}
