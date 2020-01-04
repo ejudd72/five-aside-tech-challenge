@@ -1,25 +1,21 @@
 # five-aside-tech-challenge
 Technical challenge for developMe cohort 14's technical challenge: five-aside team splitting app
 
-## User: To get this project running, download the project and use the following commands:
-- cd {filepath to where this repo is saved}/5-aside/5-aside
+## Opening the project
+- This project is hosted here: https://ejudd72.github.io/five-aside-tech-challenge/index.html 
+
+ ### Alternately, to get this project running locally, download the project and use the following commands:
+- cd {filepath to where this repo is saved}
 - npm install 
 - npm start 
-
-- Alternately, you can visit the hosted page on github pages here: 
 
 ## Project Brief: 
 Build a 5 a side team picker: 
 Accept names of 10 players, hit a button and it will randomise it into 2 teams of 5. 
 
-### Optional features: 
-- solution can support any number of people a side (begin with a form of 10 entries, ability to add/remove number of entries)
-- ability to balance teams - splitting strong/weak fairly. 
-- ability to view previous teams 
-
 ### To-do: 
-- Javascript functions created to sort an array of any number of player objects and sort randomly (23/12/2019)
-- Javascript functions created to sort an array of any number of player objects and sort into fair teams based on skill level (23/12/2019) 
+- Javascript functions created to sort an array of any number of player objects and sort randomly //
+- Javascript functions created to sort an array of any number of player objects and sort into fair teams based on skill level
 - Wireframe for UX // https://app.moqups.com/QFuGZSbiHg/view 
 - Set up react and redux //
 - Game-start component (form for inputting player names, team names and skill levels) //
