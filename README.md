@@ -5,11 +5,9 @@ Technical challenge for developMe cohort 14's technical challenge: five-aside te
 - This project is hosted here: https://ejudd72.github.io/five-aside-tech-challenge/index.html 
 
  ### Alternately, to get this project running locally, download the project and use the following commands:
-- cd {filepath to where this repo is saved}/5-aside/5-aside
+- cd {filepath to where this repo is saved}
 - npm install 
 - npm start 
-
-- Alternately, you can visit the hosted page on github pages here: 
 
 ## Project Brief: 
 Build a 5 a side team picker: 
