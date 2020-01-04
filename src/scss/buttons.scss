@@ -1,0 +1,59 @@
+//global button styling
+button {
+    border-color: transparent;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: $contrast;
+    filter: drop-shadow(5px 5px 5px darkgrey);
+}
+
+button:hover { 
+    background-color: rgba(58, 73, 43, 0.762);
+    color: white;
+}
+
+// submit form buttons 
+.header-buttons {
+    background-color: lightgrey;
+    padding: 20px;
+}
+
+// Input form buttons
+.add-player-button {
+    background-color: green;
+}
+.remove-player-button {
+    background-color: red;
+}
+
+
+
+//pitch page
+.full-pitch .pitch button {
+    margin: 0 auto;
+    background-color: black; 
+}
+
+
+.header-buttons button  {
+    background-color: $darkColour;
+}
+
+.button-panel {
+    display: flex;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    .button {
+        margin: 10px;
+    }
+}
+
+.shirt-select {
+    width: 50px;
+    padding: 5px;
+    border-radius: 50%;
+    margin: 10px;
+    transition: width background-color 1s;
+}

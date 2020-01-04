@@ -1,0 +1,38 @@
+h1 {
+    font-family: $logoFont;
+    font-weight:  bold;
+} 
+
+h2, 
+h3, 
+h4, 
+h5, 
+h6, 
+th {
+    font-family: $headFont;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    color: $darkShade;
+}
+
+body {
+    font-family: $bodyFont;
+    color: $darkColour;
+}
+label {
+    padding: 10px;
+    display: block;
+}
+
+ul {
+    list-style: none;
+    margin-left: 20px;
+}
+
+//Pitch page resultss display
+.player-name {
+    font-weight: bold;
+    font-size: 2rem;
+    display: block;
+}
