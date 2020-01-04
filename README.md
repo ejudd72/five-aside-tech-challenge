@@ -1,7 +1,10 @@
 # five-aside-tech-challenge
 Technical challenge for developMe cohort 14's technical challenge: five-aside team splitting app
 
-## User: To get this project running, download the project and use the following commands:
+## Opening the project
+- This project is hosted here: https://ejudd72.github.io/five-aside-tech-challenge/index.html 
+
+ ### Alternately, to get this project running locally, download the project and use the following commands:
 - cd {filepath to where this repo is saved}/5-aside/5-aside
 - npm install 
 - npm start 
